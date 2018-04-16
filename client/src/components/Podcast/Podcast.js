@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
-import DeleteBtn from '../../components/DeleteBtn';
-import Jumbotron from '../../components/Jumbotron';
+import { Link } from 'react-router-dom';
 import API from '../../utils/API';
-import { Col, Row, Container } from '../../components/Grid';
-import { List, ListItem } from '../../components/List';
-import { Label, Input, FormBtn } from '../../components/Form';
 
 class Podcast extends Component {
   state = {
@@ -24,20 +20,25 @@ class Podcast extends Component {
     this.loadScrapes();
   }
 
+  comonentDidUpdate(){
+    loadScrapes();
+  }
+
+  // load saved podcasts from endpoint
   loadPodcasts = () => {
     API.getPodcasts()
-      .then(res =>
-        this.setState({ podcasts: res.data, podcast: '', episode: '', link: '', img: '' })
-      )
+      .then(res => this.setState({ podcasts: res.data }) )
       .catch(err => console.log(err));
   };
 
+  // load new podcasts from endpoint 
   loadScrapes = () => {
     API.getScrapes()
       .then(res => res.data.sort( (a,b) => Math.random() > .5 ) )
+      .then(data => data.filter(scrape => this.state.podcasts.every(saved => saved.link !== scrape.link) ))
       .then(data => this.setState({ scrapes: data }))
       .catch(err => console.log(err));
-  }
+  };
 
 
 // **************************************************************/
@@ -59,7 +60,7 @@ class Podcast extends Component {
         link: this.state.link,
         img: this.state.img
       })
-      .then(res => this.loadPodcasts())
+      .then(res => this.setState({podcast: '', episode: '', link: '', img: '' }))
       .catch(err => console.log(err));
     }
   };

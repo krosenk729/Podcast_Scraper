@@ -33,6 +33,8 @@ module.exports = {
         .then($ => {
           $('#episodes li').each((it, el)=>{
             scraped.push({
+              // _id: $(el).find('.title').attr('href').match(/.\/(.*?)$/gim),
+              _id: $(el).find('.stitcher-ll').attr('data-eid'),
               podcast: $('h1.showName').text().trim() || podname,
               episode: $(el).find('a.title').text(),
               link: $(el).find('.title').attr('href'),
