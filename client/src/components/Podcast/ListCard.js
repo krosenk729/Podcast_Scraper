@@ -15,7 +15,7 @@ const ListCard = (props) => (
       <div class="card-action">
         <a href={props.link} target="_blank">Listen to Podcast</a>
         {props.isSaved ? <Link to={"/podcast/" + props._id}>Add Notes</Link>  : ''}
-        {props.children}
+        {props.isSaved ? <button onClick={()=> props.unsavePodcast(props._id)}>Remove Episode</button>  : <button onClick={()=> props.savePodcast(props._id)}>Save Episode</button>}
       </div>
     </div>
   </div>
@@ -28,7 +28,11 @@ ListCard.propTypes = {
   link: PropTypes.string.isRequired,
   duration: PropTypes.string,
   img: PropTypes.string,
-  isSaved: PropTypes.boolean.isRequired
+
+  isSaved: PropTypes.boolean.isRequired,
+
+  unsavePodcast: PropTypes.func,
+  savePodcast: PropTypes.func
 };
 
 

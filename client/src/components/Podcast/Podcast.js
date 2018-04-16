@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import API from '../../utils/API';
+import AddPodcast from '.AddPodcast';
+import ListCard from '.ListCard';
 
 class Podcast extends Component {
   state = {
@@ -50,23 +52,9 @@ class Podcast extends Component {
 // **************************************************************/
 // Save Scrapes & Save New Podcasts
 
-  handleInputChange = event => {
-    const { name, value } = event.target;
-    this.setState({
-      [name]: value
-    });
-  };
-
-  handleFormSubmit = event => {
-    event.preventDefault();
-    if (this.state.podcast && this.state.episode && this.state.link) {
-      API.savePodcast({
-        podcast: this.state.podcast,
-        episode: this.state.episode,
-        link: this.state.link,
-        img: this.state.img
-      })
-      .then(res => this.setState({podcast: '', episode: '', link: '', img: '' }))
+  handleManualSave = podcast => {
+      API.savePodcast(podcast)
+      .then(res => this.loadPodcasts())
       .catch(err => console.log(err));
     }
   };
@@ -76,9 +64,7 @@ class Podcast extends Component {
     API.savePodcast(saved)
       .then(res => this.loadPodcasts())
       .catch(err => console.log(err));
-  }
-
-
+  };
 
 // **************************************************************/
 // Remove Saves
@@ -99,91 +85,29 @@ class Podcast extends Component {
       {/* filter between saved / unsaved / all */}
       </div>
       <div>
-      {/* filter between saved / unsaved / all */}
       <h2>Episodes</h2>
-      {this.render}
+      {/* render list of podcasts */}
       </div>
-      <Container fluid>
-        <Row>
-          <Col size='md-6'>
-            <Jumbotron>
-              <h1>Recent Episodes</h1>
-            </Jumbotron>
-            <List>
-                { this.state.scrapes.map(podcast => (
-                  <ListItem key={podcast._id}>
-                    <a href={podcast.link} target='_blank'>
-                      <h4>{podcast.episode}</h4>
-                      <small>{podcast.podcast}</small>
-                      <img src={podcast.img} />
-                      </a>
-                    <DeleteBtn onClick={() => this.unsavePodcast(podcast._id)} />
-                  </ListItem>
-                )) }
-            </List>
-            <Jumbotron>
-              <h1>Save Your Own</h1>
-            </Jumbotron>
-            <form>
-              <Label htmlFor='podcast'>Podcast Name:</Label>
-              <Input
-                value={this.state.podcast}
-                onChange={this.handleInputChange}
-                name='podcast'
-                placeholder='The Awesome Show'
-              />
-              <Label htmlFor='episode'>Episode Title:</Label>
-              <Input
-                value={this.state.episode}
-                onChange={this.handleInputChange}
-                name='episode'
-                placeholder='The Awesome Episode'
-              />
-              <Label htmlFor='link'>Episode Link:</Label>
-              <Input
-                value={this.state.link}
-                onChange={this.handleInputChange}
-                name='link'
-                placeholder='https://...'
-              />
-              <Label htmlFor='img'>Cover Image:</Label>
-              <Input
-                value={this.state.img}
-                onChange={this.handleInputChange}
-                name='img'
-                placeholder='https://...'
-              />
-              <FormBtn
-                disabled={!(this.state.podcast && this.state.episode && this.state.link)}
-                onClick={this.handleFormSubmit}
-              >
-                Save Episode
-              </FormBtn>
-            </form>
-          </Col>
-          <Col size='md-6 sm-12'>
-            <Jumbotron>
-              <h1>Saved Podcasts</h1>
-            </Jumbotron>
-            {this.state.podcasts.length ? (
-              <List>
-                { this.state.podcasts.map(podcast => (
-                  <ListItem key={podcast._id}>
-                    <a href={podcast.link} target='_blank'>
-                      <h4>{podcast.episode}</h4>
-                      <small>{podcast.podcast}</small>
-                      <img src={podcast.img} />
-                      </a>
-                    <DeleteBtn onClick={() => this.unsavePodcast(podcast._id)} />
-                  </ListItem>
-                )) }
-              </List>
-            ) : (
-              <h3>No Results to Display</h3>
-            )}
-          </Col>
-        </Row>
-      </Container>
+      <div>
+      <h2>Saved Episodes</h2>
+      {/* render list of podcasts */}
+      {this.state.podcasts.map( podcast => (
+        <ListCard
+        key={podcast._id}
+        {...podcast}
+        unsavePodcast={this.unsavePodcast}
+        />
+        ))}
+      </div>
+
+      <div>
+      <h2>Manually Add Your Own Episode</h2>
+      <AddPodcast 
+      manuallyAdd={this.handleManualSave} 
+      />
+      </div>
+
+      </React.Fragment>
     );
   }
 }
