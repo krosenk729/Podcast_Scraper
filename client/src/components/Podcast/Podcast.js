@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import API from '../../utils/API';
-import AddPodcast from '.AddPodcast';
-import ListCard from '.ListCard';
+import AddPodcast from './AddPodcast';
+import ListCard from './ListCard';
 
 class Podcast extends Component {
   state = {
@@ -20,7 +20,7 @@ class Podcast extends Component {
   }
 
   comonentDidUpdate(){
-    loadScrapes();
+    this.loadScrapes();
   }
 
   // load saved podcasts from endpoint
@@ -47,7 +47,6 @@ class Podcast extends Component {
       API.savePodcast(podcast)
       .then(res => this.loadPodcasts())
       .catch(err => console.log(err));
-    }
   };
 
   handleScrapeSave = index => {
@@ -68,43 +67,44 @@ class Podcast extends Component {
 
 // **************************************************************/
 // Render
-
-  render() {
+  render(){
     return (
       <React.Fragment>
       <div>
       {/* filter between saved / unsaved / all */}
       </div>
+
       <div>
-      <h2>Episodes</h2>
       {/* render list of podcasts */}
+      <h2>Episodes</h2>
       {this.state.scrapes.map( scrape => (
         <ListCard
         key={scrape._id}
         {...scrape}
-        isSaved={false}
+        isSaved={'false'}
         savePodcast={this.savePodcast}
         />
         ))}
       </div>
+
       <div>
-      <h2>Saved Episodes</h2>
       {/* render list of podcasts */}
+      <h2>Saved Episodes</h2>
       {this.state.podcasts.map( podcast => (
         <ListCard
         key={podcast._id}
         {...podcast}
-        isSaved={true}
+        isSaved={'true'}
         unsavePodcast={this.unsavePodcast}
         />
         ))}
       </div>
 
       <div>
-      <h2>Manually Add Your Own Episode</h2>
-      <AddPodcast 
-      manuallyAdd={this.handleManualSave} 
-      />
+        <h2>Manually Add Your Own Episode</h2>
+        <AddPodcast 
+        manuallyAdd={this.handleManualSave} 
+        />
       </div>
 
       </React.Fragment>

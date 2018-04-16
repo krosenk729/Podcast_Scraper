@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 const ListCard = (props) => (
   <div class="card horizontal">
     <div class="card-image">
-      <img src={props.img}>
+      <img src={props.img} />
     </div>
     <div class="card-stacked">
       <div class="card-content">
@@ -29,7 +29,7 @@ ListCard.propTypes = {
   duration: PropTypes.string,
   img: PropTypes.string,
 
-  isSaved: PropTypes.boolean.isRequired,
+  isSaved: PropTypes.boolean,
 
   unsavePodcast: PropTypes.func,
   savePodcast: PropTypes.func
