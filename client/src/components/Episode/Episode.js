@@ -8,14 +8,17 @@ class Episode extends Component {
   };
   // When this component mounts, grab the podcast with the _id of this.props.match.params.id
   componentDidMount() {
-    API.getPodcast(this.props.match.params.id)
+    API.getSinglePodcast(this.props.match.params.id)
       .then(res => this.setState({ podcast: res.data }))
       .catch(err => console.log(err));
   }
 
   render() {
     return (
+        <React.Fragment>
+          {podcast.episode}
             <Link to="/">Back to All Podcasts</Link>
+        </React.Fragment>
     );
   }
 }

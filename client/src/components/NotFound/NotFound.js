@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import faHome from '@fortawesome/fontawesome-free-solid/faHome';
 
-const NoMatch = () => (
+const NotFound = () => (
   <div className="container">
         <h1>404 : Not Found</h1>
         <Link to={'/'}>
@@ -12,4 +12,4 @@ const NoMatch = () => (
   </div>
 );
 
-export default NoMatch;
+export default NotFound;

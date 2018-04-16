@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import API from '../../utils/API';
-import AddPodcast from './AddPodcast';
-import PodcastCard from './PodcastCard';
-import ScrapeCard from './ScrapeCard';
+import AddSaved from './AddSaved';
+import PodcastCard from '../Shared/PodcastCard';
 
-class Podcast extends Component {
+class Saved extends Component {
   state = {
     podcasts: [],
     scrapes: [],
@@ -17,11 +16,10 @@ class Podcast extends Component {
 
   componentDidMount() {
     this.loadPodcasts();
-    this.loadScrapes();
   }
 
   comonentDidUpdate(){
-    this.loadScrapes();
+    this.loadPodcasts();
   }
 
   // load saved podcasts from endpoint
@@ -30,16 +28,6 @@ class Podcast extends Component {
       .then(res => this.setState({ podcasts: res.data }) )
       .catch(err => console.log(err));
   };
-
-  // load new podcasts from endpoint 
-  loadScrapes = () => {
-    API.getScrapes()
-      .then(res => res.data.sort( (a,b) => Math.random() > .5 ) )
-      .then(data => data.filter(scrape => this.state.podcasts.every(saved => saved.link !== scrape.link) ))
-      .then(data => this.setState({ scrapes: data }))
-      .catch(err => console.log(err));
-  };
-
 
 // **************************************************************/
 // Save Scrapes & Save Manual Adds
@@ -50,12 +38,6 @@ class Podcast extends Component {
       .catch(err => console.log(err));
   };
 
-  handleScrapeSave = index => {
-    let saved = this.state.scrapes.filter(i => i._id == index);
-    API.savePodcast(saved)
-      .then(res => this.loadPodcasts())
-      .catch(err => console.log(err));
-  };
 
 // **************************************************************/
 // Remove Saves
@@ -71,23 +53,8 @@ class Podcast extends Component {
   render(){
     return (
       <React.Fragment>
-      <div>
-      {/* filter between saved / unsaved / all */}
-      </div>
 
-      <div>
-      {/* render list of podcasts */}
-      <h2>Episodes</h2>
-      {this.state.scrapes.map( scrape => (
-        <ScrapeCard
-        key={scrape._id}
-        {...scrape}
-        savePodcast={this.savePodcast}
-        />
-        ))}
-      </div>
-
-      <div>
+      <div className='row'>
       {/* render list of podcasts */}
       <h2>Saved Episodes</h2>
       {this.state.podcasts.map( podcast => (
@@ -101,7 +68,7 @@ class Podcast extends Component {
 
       <div>
         <h2>Manually Add Your Own Episode</h2>
-        <AddPodcast 
+        <AddSaved 
         manuallyAdd={this.handleManualSave} 
         />
       </div>
@@ -111,4 +78,4 @@ class Podcast extends Component {
   }
 }
 
-export default Podcast;
+export default Saved;

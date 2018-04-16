@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types'; 
-import Input from '../Layout';
+import Input from '../Shared/Input';
 
-class AddPodcast extends Component {
+class AddSaved extends Component {
   static propTypes = {
     manuallyAdd: PropTypes.func
   }
@@ -93,4 +93,4 @@ class AddPodcast extends Component {
   }
 }
 
-export default AddPodcast;
+export default AddSaved;
