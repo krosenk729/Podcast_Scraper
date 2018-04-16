@@ -43,6 +43,7 @@ class AddPodcast extends Component {
   render(){
     return (
             <form>
+
             <Input 
             name='podcast'
             val={this.state.podcast}
@@ -52,36 +53,33 @@ class AddPodcast extends Component {
             Podcast Name:
             </Input>
 
-              <input 
-                type='text'
-                value={this.state.episode}
-                onChange={this.handleInputChange}
+              <Input
                 name='episode'
-                id='episode'
+                val={this.state.episode}
                 placeholder='The Awesome Episode'
-              />
-              <label htmlFor='episode'>Episode Title:</label>
-              
-              <input 
-                type='text'
-                value={this.state.link}
                 onChange={this.handleInputChange}
+              >
+              Episode Title:
+              </Input>
+              
+              <Input
                 name='link'
-                id='link'
+                val={this.state.link}
+                onChange={this.handleInputChange}
                 placeholder='https://...'
-              />
-              <label htmlFor='link'>Episode Link:</label>
+              >
+              Episode Link:
+              </Input>
               
 
-              <input 
-                type='text'
-                value={this.state.img}
-                onChange={this.handleInputChange}
+              <Input
                 name='img'
-                id='img'
+                val={this.state.img}
+                onChange={this.handleInputChange}
                 placeholder='https://...'
-              />
-              <label htmlFor='img'>Cover Image:</label>
+              >
+              Cover Image:
+              </Input>
               
               <button
                 type='submit'
