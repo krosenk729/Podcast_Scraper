@@ -6,6 +6,7 @@ class Podcast extends Component {
   state = {
     podcasts: [],
     scrapes: [],
+    viewing: 'all',
     podcast: '',
     episode: '',
     link: '',
@@ -41,6 +42,11 @@ class Podcast extends Component {
   };
 
 
+
+// **************************************************************/
+// Show Podcast Lists & Change Filters
+
+
 // **************************************************************/
 // Save Scrapes & Save New Podcasts
 
@@ -67,12 +73,12 @@ class Podcast extends Component {
 
   handleScrapeSave = index => {
     let saved = this.state.scrapes.filter(i => i._id == index);
-    let newScrapes = this.state.scrapes.filter(i => i._id !== index);
     API.savePodcast(saved)
       .then(res => this.loadPodcasts())
-      .then(() => this.setState({scrapes: newScrapes}))
       .catch(err => console.log(err));
   }
+
+
 
 // **************************************************************/
 // Remove Saves
@@ -88,6 +94,15 @@ class Podcast extends Component {
 
   render() {
     return (
+      <React.Fragment>
+      <div>
+      {/* filter between saved / unsaved / all */}
+      </div>
+      <div>
+      {/* filter between saved / unsaved / all */}
+      <h2>Episodes</h2>
+      {this.render}
+      </div>
       <Container fluid>
         <Row>
           <Col size='md-6'>
