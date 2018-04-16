@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types'; 
+import Input from '../Layout';
 
 class AddPodcast extends Component {
   static propTypes = {
@@ -42,16 +43,15 @@ class AddPodcast extends Component {
   render(){
     return (
             <form>
-              <label htmlFor='podcast'>Podcast Name:</label>
-              <input 
-                type='text'
-                value={this.state.podcast}
-                onChange={this.handleInputChange}
-                name='podcast'
-                id='podcast'
-                placeholder='The Awesome Show'
-              />
-              <label htmlFor='episode'>Episode Title:</label>
+            <Input 
+            name='podcast'
+            val={this.state.podcast}
+            placeholder='https://...'
+            onChange={this.handleInputChange}
+            >
+            Podcast Name:
+            </Input>
+
               <input 
                 type='text'
                 value={this.state.episode}
@@ -60,7 +60,8 @@ class AddPodcast extends Component {
                 id='episode'
                 placeholder='The Awesome Episode'
               />
-              <label htmlFor='link'>Episode Link:</label>
+              <label htmlFor='episode'>Episode Title:</label>
+              
               <input 
                 type='text'
                 value={this.state.link}
@@ -69,7 +70,9 @@ class AddPodcast extends Component {
                 id='link'
                 placeholder='https://...'
               />
-              <label htmlFor='img'>Cover Image:</label>
+              <label htmlFor='link'>Episode Link:</label>
+              
+
               <input 
                 type='text'
                 value={this.state.img}
@@ -78,6 +81,8 @@ class AddPodcast extends Component {
                 id='img'
                 placeholder='https://...'
               />
+              <label htmlFor='img'>Cover Image:</label>
+              
               <button
                 type='submit'
                 disabled={!(this.state.podcast && this.state.episode && this.state.link)}
