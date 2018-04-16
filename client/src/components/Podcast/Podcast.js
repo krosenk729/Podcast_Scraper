@@ -8,11 +8,7 @@ class Podcast extends Component {
   state = {
     podcasts: [],
     scrapes: [],
-    viewing: 'all',
-    podcast: '',
-    episode: '',
-    link: '',
-    img: ''
+    viewing: 'all'
   };
 
 // **************************************************************/
@@ -44,13 +40,8 @@ class Podcast extends Component {
   };
 
 
-
 // **************************************************************/
-// Show Podcast Lists & Change Filters
-
-
-// **************************************************************/
-// Save Scrapes & Save New Podcasts
+// Save Scrapes & Save Manual Adds
 
   handleManualSave = podcast => {
       API.savePodcast(podcast)
@@ -87,6 +78,14 @@ class Podcast extends Component {
       <div>
       <h2>Episodes</h2>
       {/* render list of podcasts */}
+      {this.state.scrapes.map( scrape => (
+        <ListCard
+        key={scrape._id}
+        {...scrape}
+        isSaved={false}
+        savePodcast={this.savePodcast}
+        />
+        ))}
       </div>
       <div>
       <h2>Saved Episodes</h2>
@@ -95,6 +94,7 @@ class Podcast extends Component {
         <ListCard
         key={podcast._id}
         {...podcast}
+        isSaved={true}
         unsavePodcast={this.unsavePodcast}
         />
         ))}

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import API from "../../utils/API";
 
-class Notes extends Component {
+class Episode extends Component {
   state = {
     podcast: {}
   };
@@ -15,9 +15,9 @@ class Notes extends Component {
 
   render() {
     return (
-            <Link to="/">← Back to Authors</Link>
+            <Link to="/">Back to All Podcasts</Link>
     );
   }
 }
 
-export default Notes;
+export default Episode;
