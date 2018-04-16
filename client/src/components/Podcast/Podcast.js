@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import API from '../../utils/API';
 import AddPodcast from './AddPodcast';
-import ListCard from './ListCard';
+import PodcastCard from './PodcastCard';
+import ScrapeCard from './ScrapeCard';
 
 class Podcast extends Component {
   state = {
@@ -78,10 +79,9 @@ class Podcast extends Component {
       {/* render list of podcasts */}
       <h2>Episodes</h2>
       {this.state.scrapes.map( scrape => (
-        <ListCard
+        <ScrapeCard
         key={scrape._id}
         {...scrape}
-        isSaved={'false'}
         savePodcast={this.savePodcast}
         />
         ))}
@@ -91,10 +91,9 @@ class Podcast extends Component {
       {/* render list of podcasts */}
       <h2>Saved Episodes</h2>
       {this.state.podcasts.map( podcast => (
-        <ListCard
+        <PodcastCard
         key={podcast._id}
         {...podcast}
-        isSaved={'true'}
         unsavePodcast={this.unsavePodcast}
         />
         ))}
