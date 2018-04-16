@@ -28,8 +28,8 @@ ListCard.propTypes = {
   link: PropTypes.string.isRequired,
   duration: PropTypes.string,
   img: PropTypes.string,
-
-  isSaved: PropTypes.boolean,
+  
+  isSaved: PropTypes.bool,
 
   unsavePodcast: PropTypes.func,
   savePodcast: PropTypes.func
