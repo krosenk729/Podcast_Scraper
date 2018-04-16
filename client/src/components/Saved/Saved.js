@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import API from '../../utils/API';
 import AddSaved from './AddSaved';
-import PodcastCard from '../Shared/PodcastCard';
+import PodcastList from '../Shared/PodcastList';
 
 class Saved extends Component {
   state = {
@@ -57,13 +57,15 @@ class Saved extends Component {
       <div className='row'>
       {/* render list of podcasts */}
       <h2>Saved Episodes</h2>
+      <ul className='collection'>
       {this.state.podcasts.map( podcast => (
-        <PodcastCard
+        <PodcastList
         key={podcast._id}
         {...podcast}
         unsavePodcast={this.unsavePodcast}
         />
         ))}
+      </ul>
       </div>
 
       <div>

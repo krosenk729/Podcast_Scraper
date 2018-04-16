@@ -25,3 +25,9 @@ h1, h2, h3, h4, h5, h6{
 .card.horizontal .card-image{
 	max-width: 25%
 }
+
+.secondary-content{
+	min-width: 110px;
+	display: flex;
+	justify-content: space-between;
+}

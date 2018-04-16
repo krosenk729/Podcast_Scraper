@@ -16,7 +16,7 @@ class Episode extends Component {
   render() {
     return (
         <React.Fragment>
-          {podcast.episode}
+            {this.state.podcast.episode}
             <Link to="/">Back to All Podcasts</Link>
         </React.Fragment>
     );
