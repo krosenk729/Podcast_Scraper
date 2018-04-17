@@ -51,13 +51,12 @@ class Podcasts extends Component {
       .catch(err => console.log(err));
   };
 
-  handleScrapeSave = async (index) => {
+  handleScrapeSave = (index, cb) => {
     let saved = this.state.scrapes.filter(i => i.eid == index);
-    await API.savePodcast(saved)
+    API.savePodcast(saved)
       .then(res => this.loadPodcasts())
+      .then(() => cb())
       .catch(err => console.log(err));
-
-    return Promise.resolve();
   };
 
 // **************************************************************/

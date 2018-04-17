@@ -80,14 +80,15 @@ main, .main {
 .hero-split {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: minmax(auto, 50vh); }
+  grid-template-rows: minmax(auto, 50vh);
+  padding-left: 2em;
+  padding-right: 2em; }
   .hero-split .img-wrapper {
-    overflow: hidden; }
+    overflow: hidden;
+    text-align: right; }
     .hero-split .img-wrapper img {
-      width: 100%;
-      height: auto;
-      transform-origin: 50% 50%;
-      transform: translateY(-50%); }
+      height: 100%;
+      width: auto; }
 
 .actions {
   padding: 3em;

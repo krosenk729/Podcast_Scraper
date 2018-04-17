@@ -21,7 +21,7 @@ class Episode extends Component {
     if(this.state.podcast && this.state.podcast.pid && this.state.podcast.eid){
       const iframeSource = `https://app.stitcher.com/splayer/f/${this.state.podcast.pid}/${this.state.podcast.eid}`
       return (
-        <iframe src={iframeSource} title={this.state.podcast.episode} frameborder="0" scrolling="no"></iframe>
+        <iframe src={iframeSource} title={this.state.podcast.episode} frameBorder="0" scrolling="no"></iframe>
         )
       }
     }
@@ -38,7 +38,7 @@ class Episode extends Component {
           <h3>{this.state.podcast.podcast}</h3>
           </div>
           <div className="img-wrapper">
-          <img src={this.state.podcast.img || "/placeholder.png"} />
+          <img src={this.state.podcast.img || "/placeholder.png"} alt="" />
           </div>
           </div>
           <main className="main episode">

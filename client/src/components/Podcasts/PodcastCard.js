@@ -26,8 +26,7 @@ class PodcastCard extends Component {
   // Handle Navigation
   
   saveThenNavigate = eid => {
-    this.props.savePodcast(eid)
-    .then(() => this.navigate())
+    this.props.savePodcast(eid, () => this.navigate())
   }
 
   navigate = eid => {
@@ -62,7 +61,7 @@ class PodcastCard extends Component {
       <div className="card">
       <div className="card-image">
       <a href={this.props.link} target="_blank">
-        <img src={this.props.img || "/placeholder.png"} />
+        <img src={this.props.img || "/placeholder.png"} alt="" />
       </a>
       </div>
       <div className="card-content">

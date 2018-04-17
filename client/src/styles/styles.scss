@@ -155,15 +155,16 @@ main, .main{
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
 	grid-template-rows: minmax(auto, 50vh);
+	padding-left: 2em;
+	padding-right: 2em;
 
 	.img-wrapper{
 		overflow: hidden;
+		text-align: right;
 
 		img{
-			width: 100%;
-			height: auto;
-			transform-origin: 50% 50%;
-			transform: translateY(-50%);
+			height: 100%;
+			width: auto;
 		}
 	}
 }
