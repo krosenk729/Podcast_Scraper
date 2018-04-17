@@ -21,7 +21,7 @@ class Episode extends Component {
     if(this.state.podcast && this.state.pid && this.state.eid){
       const iframeSource = `https://app.stitcher.com/splayer/f/${this.state.pid}/${this.state.eid}`
       return (
-        <iframe src={iframeSource} frameborder="0" scrolling="no"></iframe>
+        <iframe src={iframeSource} title={this.state.episode} frameborder="0" scrolling="no"></iframe>
         )
       }
     }
@@ -34,14 +34,14 @@ class Episode extends Component {
         <React.Fragment>
           <div className="hero-split">
           <div>
-          <h1>{this.state.podcast.episode}</h1>
+           <h1>{this.state.podcast.episode}</h1>
           <h3>{this.state.podcast.podcast}</h3>
           </div>
           <div className="img-wrapper">
           <img src={this.state.podcast.img || "/placeholder.png"} />
           </div>
           </div>
-          <main>
+          <main className="main episode">
           {this.renderEmbedPlayer}
           <br />
           <div className="actions">

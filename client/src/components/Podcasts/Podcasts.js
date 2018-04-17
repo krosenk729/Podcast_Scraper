@@ -19,10 +19,6 @@ class Podcasts extends Component {
     this.loadScrapes();
   }
 
-  comonentDidUpdate(){
-    this.loadScrapes();
-  }
-
   // load saved podcasts from endpoint
   loadPodcasts = () => {
     API.getPodcasts()
@@ -58,7 +54,10 @@ class Podcasts extends Component {
   handleScrapeSave = index => {
     let saved = this.state.scrapes.filter(i => i.eid == index);
     API.savePodcast(saved)
-      .then(res => this.loadPodcasts())
+      .then(res => {
+        this.loadPodcasts();
+        this.loadScrapes();
+      })
       .catch(err => console.log(err));
   };
 
@@ -76,7 +75,7 @@ class Podcasts extends Component {
 
   render() {
     return (
-      <main class="main">
+      <main className="main podcast">
       <article className="container" id="scrapes">
       <h1>New Episodes</h1>
       <p>Save an episode for later or save and listen now. All the things.</p>

@@ -61,7 +61,9 @@ class PodcastCard extends Component {
     return (
       <div className="card">
       <div className="card-image">
+      <a href={this.props.link} target="_blank">
         <img src={this.props.img || "/placeholder.png"} />
+      </a>
       </div>
       <div className="card-content">
         <h4>{this.props.episode}</h4>
