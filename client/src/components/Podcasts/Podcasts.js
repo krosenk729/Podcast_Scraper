@@ -16,20 +16,20 @@ class Podcasts extends Component {
 
   componentDidMount() {
     this.loadPodcasts();
-    this.loadScrapes();
   }
 
   // load saved podcasts from endpoint
   loadPodcasts = () => {
     API.getPodcasts()
       .then(res => this.setState({ podcasts: res.data }) )
+      .then(() => this.loadScrapes() )
       .catch(err => console.log(err));
   };
 
   // load new podcasts from endpoint 
   loadScrapes = () => {
     API.getScrapes()
-      .then(res => this.remix(res.data) )
+      .then(res => res.data )
       .then(data => data.filter(scrape => this.state.podcasts.every(saved => saved.link != scrape.link) ))
       .then(data => this.setState({ scrapes: data }))
       .catch(err => console.log(err));
@@ -51,14 +51,13 @@ class Podcasts extends Component {
       .catch(err => console.log(err));
   };
 
-  handleScrapeSave = index => {
+  handleScrapeSave = async (index) => {
     let saved = this.state.scrapes.filter(i => i.eid == index);
-    API.savePodcast(saved)
-      .then(res => {
-        this.loadPodcasts();
-        this.loadScrapes();
-      })
+    await API.savePodcast(saved)
+      .then(res => this.loadPodcasts())
       .catch(err => console.log(err));
+
+    return Promise.resolve();
   };
 
 // **************************************************************/

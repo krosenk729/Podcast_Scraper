@@ -18,10 +18,10 @@ class Episode extends Component {
   // **************************************************************/
   // If episode is from stitcher (has pid and eid), show embed code
   renderEmbedPlayer = () => {
-    if(this.state.podcast && this.state.pid && this.state.eid){
-      const iframeSource = `https://app.stitcher.com/splayer/f/${this.state.pid}/${this.state.eid}`
+    if(this.state.podcast && this.state.podcast.pid && this.state.podcast.eid){
+      const iframeSource = `https://app.stitcher.com/splayer/f/${this.state.podcast.pid}/${this.state.podcast.eid}`
       return (
-        <iframe src={iframeSource} title={this.state.episode} frameborder="0" scrolling="no"></iframe>
+        <iframe src={iframeSource} title={this.state.podcast.episode} frameborder="0" scrolling="no"></iframe>
         )
       }
     }
@@ -42,7 +42,7 @@ class Episode extends Component {
           </div>
           </div>
           <main className="main episode">
-          {this.renderEmbedPlayer}
+          {this.renderEmbedPlayer()}
           <br />
           <div className="actions">
           <a href={this.state.podcast.link} target="_blank">Listen on Stitcher</a>
