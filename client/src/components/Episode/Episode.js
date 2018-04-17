@@ -6,18 +6,49 @@ class Episode extends Component {
   state = {
     podcast: {}
   };
-  // When this component mounts, grab the podcast with the _id of this.props.match.params.id
+
+  // **************************************************************/
+  // Load Data on Component Mount  
   componentDidMount() {
-    API.getSinglePodcast(this.props.match.params.id)
+    API.getSingleEpisode(this.props.match.params.id)
       .then(res => this.setState({ podcast: res.data }))
       .catch(err => console.log(err));
   }
 
+  // **************************************************************/
+  // If episode is from stitcher (has pid and eid), show embed code
+  renderEmbedPlayer = () => {
+    if(this.state.podcast && this.state.pid && this.state.eid){
+      const iframeSource = `https://app.stitcher.com/splayer/f/${this.state.pid}/${this.state.eid}`
+      return (
+        <iframe src={iframeSource} frameborder="0" scrolling="no"></iframe>
+        )
+      }
+    }
+
+  // **************************************************************/
+  // Render
+
   render() {
     return (
         <React.Fragment>
-            {this.state.podcast.episode}
-            <Link to="/">Back to All Podcasts</Link>
+          <div className="hero-split">
+          <div>
+          <h1>{this.state.podcast.episode}</h1>
+          <h3>{this.state.podcast.podcast}</h3>
+          </div>
+          <div className="img-wrapper">
+          <img src={this.state.podcast.img || "/placeholder.png"} />
+          </div>
+          </div>
+          <main>
+          {this.renderEmbedPlayer}
+          <br />
+          <div className="actions">
+          <a href={this.state.podcast.link} target="_blank">Listen on Stitcher</a>
+          <Link to="/">Back to All Podcasts</Link>
+          </div>
+          </main>
         </React.Fragment>
     );
   }

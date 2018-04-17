@@ -1,17 +1,17 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types'; 
-import Input from '../Shared/Input';
+import React, { Component } from "react";
+import PropTypes from "prop-types"; 
+import Input from "../Shared/Input";
 
-class AddSaved extends Component {
+class AddPodcast extends Component {
   static propTypes = {
     manuallyAdd: PropTypes.func
   }
 
   state = {
-    podcast: '',
-    episode: '',
-    link: '',
-    img: ''
+    podcast: "",
+    episode: "",
+    link: "",
+    img: ""
   }
 
 // **************************************************************/
@@ -31,9 +31,10 @@ class AddSaved extends Component {
         podcast: this.state.podcast,
         episode: this.state.episode,
         link: this.state.link,
-        img: this.state.img
+        img: this.state.img,
+        eid: +new Date()
       });
-      this.setState({podcast: '', episode: '', link: '', img: '' });
+      this.setState({podcast: "", episode: "", link: "", img: "" });
     }
   };
 
@@ -45,44 +46,44 @@ class AddSaved extends Component {
             <form>
 
             <Input 
-            name='podcast'
+            name="podcast"
             val={this.state.podcast}
-            placeholder='https://...'
+            placeholder="https://..."
             onChange={this.handleInputChange}
             >
             Podcast Name:
             </Input>
 
               <Input
-                name='episode'
+                name="episode"
                 val={this.state.episode}
-                placeholder='The Awesome Episode'
+                placeholder="The Awesome Episode"
                 onChange={this.handleInputChange}
               >
               Episode Title:
               </Input>
               
               <Input
-                name='link'
+                name="link"
                 val={this.state.link}
                 onChange={this.handleInputChange}
-                placeholder='https://...'
+                placeholder="https://..."
               >
               Episode Link:
               </Input>
               
 
               <Input
-                name='img'
+                name="img"
                 val={this.state.img}
                 onChange={this.handleInputChange}
-                placeholder='https://...'
+                placeholder="https://..."
               >
               Cover Image:
               </Input>
               
               <button
-                type='submit'
+                type="submit"
                 disabled={!(this.state.podcast && this.state.episode && this.state.link)}
                 onClick={this.handleFormSubmit}
               >
@@ -93,4 +94,4 @@ class AddSaved extends Component {
   }
 }
 
-export default AddSaved;
+export default AddPodcast;

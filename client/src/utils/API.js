@@ -14,6 +14,10 @@ export default {
   getSinglePodcast: function(id) {
     return axios.get('/api/podcast/' + id);
   },
+  // Gets the podcast with the given id
+  getSingleEpisode: function(eid) {
+    return axios.get('/api/podcast/eid/' + eid);
+  },
   // Deletes the podcast with the given id
   deletePodcast: function(id) {
     return axios.delete('/api/podcast/' + id);

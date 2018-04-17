@@ -1,26 +1,24 @@
 import React from "react";
 import PropTypes from "prop-types"; 
 
-const Input = props => (
-	<div className="input-field">
+const Check = props => (
+	<div className="input-check">
 	<input 
-	type="text"
+	type="checkbox"
 	value={props.val}
 	onChange={props.onChange}
 	name={props.name}
 	id={props.name}
-	placeholder={props.placeholder}
 	/>
 	<label htmlFor={props.name}>{props.children}</label>
 	</div>
 );
 
-Input.propTypes = {
+Check.propTypes = {
   name: PropTypes.string.isRequired,
   children: PropTypes.oneOfType([PropTypes.node, PropTypes.element]),
-  placeholder: PropTypes.string,
   val: PropTypes.string,
   onChange: PropTypes.func
 };
 
-export default Input;
+export default Check;

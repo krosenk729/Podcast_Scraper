@@ -5,6 +5,8 @@ const podcastSchmea = new Schema({
   podcast: { type: String, required: true },
   episode: { type: String, required: true },
   link: { type: String, required: true },
+  eid: { type: String, required: true },
+  pid: String,
   duration: String,
   img: String,
   saved: { type: Date, default: Date.now }

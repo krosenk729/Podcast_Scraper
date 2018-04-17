@@ -1,23 +1,22 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Nav from "./components/Shared/Nav";
-import Scraped from "./components/Scraped";
+import Podcasts from "./components/Podcasts";
 import Episode from "./components/Episode";
-import Saved from "./components/Saved";
 import NotFound from "./components/NotFound";
+import './styles/styles.css';
 
 const App = () => (
   <Router>
   <React.Fragment>
     <Nav />
-    <div className='container'>
+    <main className="main">
       <Switch>
-        <Route exact path="/" component={Scraped} />
-        <Route exact path="/podcast" component={Saved} />
+        <Route exact path="/" component={Podcasts} />
         <Route exact path="/podcast/:id" component={Episode} />
         <Route component={NotFound} />
       </Switch>
-    </div>
+    </main>
     </React.Fragment>
   </Router>
 );

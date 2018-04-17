@@ -1,13 +1,14 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import API from '../../utils/API';
-import ScrapeCard from '../Shared/ScrapeCard';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import API from "../../utils/API";
+import AddPodcast from "./AddPodcast";
+import PodcastCard from "./PodcastCard";
 
-class Scraped extends Component {
+class Podcasts extends Component {
   state = {
     podcasts: [],
     scrapes: [],
-    viewing: 'all'
+    viewing: "all"
   };
 
 // **************************************************************/
@@ -49,7 +50,7 @@ class Scraped extends Component {
   };
 
   handleScrapeSave = index => {
-    let saved = this.state.scrapes.filter(i => i._id == index);
+    let saved = this.state.scrapes.filter(i => i.eid == index);
     API.savePodcast(saved)
       .then(res => this.loadPodcasts())
       .catch(err => console.log(err));
@@ -66,30 +67,43 @@ class Scraped extends Component {
 
 // **************************************************************/
 // Render
-  render(){
+
+  render() {
     return (
       <React.Fragment>
-      <div>
-      {/* filter between saved / unsaved / all */}
-      </div>
-
-      <div className='row'>
-      {/* render list of podcasts */}
-      <h2>Episodes</h2>
-      {this.state.scrapes.map( scrape => (
-        <div className='col s12'>
-        <ScrapeCard
-        key={scrape._id}
-        {...scrape}
-        savePodcast={this.savePodcast}
+      <article className="container" id="scrapes">
+      <h1>New Episodes</h1>
+      {this.state.scrapes.map(episode => (
+        <PodcastCard
+        key={episode.eid}
+        type="scrape"
+        {...episode}
+        savePodcast={this.handleScrapeSave}
         />
-        </div>
         ))}
-      </div>
+      </article>
+
+      <article className="container" id="saved">
+      <h1>Saved Episodes</h1>
+      {this.state.podcasts.map(episode => (
+        <PodcastCard
+        key={episode._id}
+        type="saved"
+        {...episode}
+        unsavePodcast={this.unsavePodcast}
+        />
+        ))}
+      </article>
+
+      <article className="container" id="add">
+      <h1>Add an Episode</h1>
+      <p>Want to save an episode not on the list? We will allow it but you have to do the typing</p>
+      <AddPodcast manuallyAdd={this.handleManualSave} />
+      </article>
 
       </React.Fragment>
     );
   }
 }
 
-export default Scraped;
+export default Podcasts;
