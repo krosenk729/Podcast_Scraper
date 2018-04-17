@@ -10,13 +10,11 @@ const App = () => (
   <Router>
   <React.Fragment>
     <Nav />
-    <main className="main">
       <Switch>
         <Route exact path="/" component={Podcasts} />
         <Route exact path="/podcast/:id" component={Episode} />
         <Route component={NotFound} />
       </Switch>
-    </main>
     </React.Fragment>
   </Router>
 );

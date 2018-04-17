@@ -49,11 +49,11 @@ class PodcastCard extends Component {
       );
 
       const mainAction = this.props.type === "scrape" ? (
-        <button onClick={() => this.props.saveThenNavigate(this.props.eid)} >
+        <button onClick={() => this.saveThenNavigate(this.props.eid)} >
         <FontAwesomeIcon icon={faChevronRight} />
         </button>
         ) : (
-        <button onClick={() => this.props.saveThenNavigate(this.props.eid)} >
+        <button onClick={() => this.navigate(this.props.eid)} >
         <FontAwesomeIcon icon={faChevronRight} />
         </button>
         );

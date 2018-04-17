@@ -33,12 +33,18 @@ class Podcasts extends Component {
   // load new podcasts from endpoint 
   loadScrapes = () => {
     API.getScrapes()
-      .then(res => res.data.sort( (a,b) => Math.random() > .5 ) )
-      .then(data => data.filter(scrape => this.state.podcasts.every(saved => saved.link !== scrape.link) ))
+      .then(res => this.remix(res.data) )
+      .then(data => data.filter(scrape => this.state.podcasts.every(saved => saved.link != scrape.link) ))
       .then(data => this.setState({ scrapes: data }))
       .catch(err => console.log(err));
   };
 
+// **************************************************************/
+// Remix Scrapes
+
+  remix = arr =>{
+    return arr.sort( (a,b) => Math.random() > .5 );
+  }
 
 // **************************************************************/
 // Save Scrapes & Save Manual Adds
@@ -61,7 +67,7 @@ class Podcasts extends Component {
 
   unsavePodcast = index => {
     API.deletePodcast(index)
-      .then(res => this.loadPodcast())
+      .then(res => this.loadPodcasts())
       .catch(err => console.log(err));
   };
 
@@ -70,7 +76,7 @@ class Podcasts extends Component {
 
   render() {
     return (
-      <React.Fragment>
+      <main class="main">
       <article className="container" id="scrapes">
       <h1>New Episodes</h1>
       <p>Save an episode for later or save and listen now. All the things.</p>
@@ -79,6 +85,7 @@ class Podcasts extends Component {
         <PodcastCard
         key={episode.eid}
         type="scrape"
+        history={this.props.history}
         {...episode}
         savePodcast={this.handleScrapeSave}
         />
@@ -94,6 +101,7 @@ class Podcasts extends Component {
         <PodcastCard
         key={episode._id}
         type="saved"
+        history={this.props.history}
         {...episode}
         unsavePodcast={this.unsavePodcast}
         />
@@ -107,7 +115,7 @@ class Podcasts extends Component {
       <AddPodcast manuallyAdd={this.handleManualSave} />
       </article>
 
-      </React.Fragment>
+      </main>
     );
   }
 }
