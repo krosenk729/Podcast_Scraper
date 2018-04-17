@@ -50,7 +50,8 @@ main, .main {
     background: transparent;
     border: none;
     outline: none;
-    border-bottom: 2px solid #3f46ad; }
+    border-bottom: 2px solid #3f46ad;
+    width: 90%; }
     .input-field input:focus, .input-field input:active {
       border-color: #3eb991; }
     .input-field input:focus ~ label, .input-field input:active ~ label, .input-field input:placeholder-shown ~ label {
