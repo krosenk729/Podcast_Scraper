@@ -4,14 +4,14 @@ import faHeadphones from "@fortawesome/fontawesome-free-solid/faHeadphones";
 
 const Nav = () => (
   <nav>
-  <div className="nav-wrapper">
+  <div className="nav-brand">
   <a href="/" className="brand-logo"><FontAwesomeIcon icon={faHeadphones} /></a>
-	<ul id="nav-mobile" className="right hide-on-med-and-down">
+  </div>
+	<ul className="nav-bar">
 	<li><a href="/#scrapes">New Episodes</a></li>
 	<li><a href="/#saved">Saved Episodes</a></li>
 	<li><a href="/#add">Add New</a></li>
 	</ul>
-  </div>
   </nav>
 );
 

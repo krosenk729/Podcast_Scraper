@@ -73,6 +73,8 @@ class Podcasts extends Component {
       <React.Fragment>
       <article className="container" id="scrapes">
       <h1>New Episodes</h1>
+      <p>Save an episode for later or save and listen now. All the things.</p>
+      <div className="card-wrapper">
       {this.state.scrapes.map(episode => (
         <PodcastCard
         key={episode.eid}
@@ -81,10 +83,13 @@ class Podcasts extends Component {
         savePodcast={this.handleScrapeSave}
         />
         ))}
+      </div>
       </article>
 
       <article className="container" id="saved">
       <h1>Saved Episodes</h1>
+      <p>Go to a saved episode's page to listen in your browser. Or unsave it. Either-Or / Win-Win</p>
+      <div className="card-wrapper">
       {this.state.podcasts.map(episode => (
         <PodcastCard
         key={episode._id}
@@ -93,6 +98,7 @@ class Podcasts extends Component {
         unsavePodcast={this.unsavePodcast}
         />
         ))}
+      </div>
       </article>
 
       <article className="container" id="add">
