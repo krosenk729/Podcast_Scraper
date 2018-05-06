@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
+import * from "../../components/Hero";
 import * from "../../components/Panel";
 import * from "../../components/Card";
 import AddPodcast from "./AddPodcast";
@@ -39,20 +40,26 @@ class Episode extends Component {
   render() {
     renderPodcast = pod => (
       <Card key={pod._id}>
+      
       <CardImg img={pod.img} />
+
       <CardBody>
       <h3>{pod.podcast}</h3>
       <a href={pod.link} target="_blank">{pod.link}</a>
       </CardBody>
+
       <CardActions>
       <button className="btn" onClick={()=>this.handleDeletePodcast(pod._id)}> X </button>
       </CardActions>
+
       </Card>
       )
 
     return (
         <React.Fragment>
-        <div>Hero</div>
+        
+        <Hero><h1>Podcasts</h1></Hero>
+
         <TabPanel>
         <Panel title="Podcasts" index=0>
         {this.state.podcasts.map(renderPodcast)}
@@ -61,6 +68,7 @@ class Episode extends Component {
         <AddPodcast handleAddPodcast={this.handleAddPodcast} />
         </Panel>
         </TabPanel>
+
         </React.Fragment>
     );
   }
