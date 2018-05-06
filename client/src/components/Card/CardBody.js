@@ -1,13 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types"; 
-import "./Card.css";
 
-export const Card = props => (
-	<div className="card">
+export const CardBody = props => (
+	<div className="card-body">
 	{props.children}
 	</div>
 );
 
-Card.PropTypes = {
+CardBody.PropTypes = {
 	children: PropTypes.element.isRequired
 }

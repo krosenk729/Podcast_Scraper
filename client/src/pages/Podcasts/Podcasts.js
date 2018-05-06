@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
-import {TabPanel, Panel} from "../..components/Panel";
+import * from "../../components/Panel";
+import * from "../../components/Card";
 import AddPodcast from "./AddPodcast";
 
 class Episode extends Component {
@@ -36,13 +37,25 @@ class Episode extends Component {
   // Render
 
   render() {
-    const tabs = 
+    renderPodcast = pod => (
+      <Card key={pod._id}>
+      <CardImg img={pod.img} />
+      <CardBody>
+      <h3>{pod.podcast}</h3>
+      <a href={pod.link} target="_blank">{pod.link}</a>
+      </CardBody>
+      <CardActions>
+      <button className="btn" onClick={()=>this.handleDeletePodcast(pod._id)}> X </button>
+      </CardActions>
+      </Card>
+      )
+
     return (
         <React.Fragment>
         <div>Hero</div>
         <TabPanel>
         <Panel title="Podcasts" index=0>
-        
+        {this.state.podcasts.map(renderPodcast)}
         </Panel>
         <Panel title="Add New" index=0>
         <AddPodcast handleAddPodcast={this.handleAddPodcast} />
