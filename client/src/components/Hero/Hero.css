@@ -1,0 +1,13 @@
+.hero{
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+
+	min-height: 45vh;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
