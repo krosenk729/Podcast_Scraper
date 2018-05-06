@@ -3,11 +3,15 @@ import * from "../../components/Card";
 
 class AddPodcast extends Component {
   state = {
-    link = ''
+    link: ""
   };
 
   // **************************************************************/
   // Add and Delete Podcasts
+
+  resetForm = () => {
+    this.setState({link: "https://www.stitcher.com/podcast/"});
+  }
 
   handleChange = data =>{
     
