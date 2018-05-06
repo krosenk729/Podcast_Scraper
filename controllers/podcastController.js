@@ -1,6 +1,6 @@
-const db = require("../models");
 const cheerio = require("cheerio");
 const request = require("request");
+const db = require("../models");
 
 // =============================================================
 // Defining CRUD methods
