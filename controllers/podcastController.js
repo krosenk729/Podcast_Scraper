@@ -1,4 +1,6 @@
 const db = require("../models");
+const cheerio = require("cheerio");
+const request = require("request");
 
 // =============================================================
 // Defining CRUD methods
@@ -24,10 +26,25 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   create: function(req, res) {
-    db.Podcast
-      .create(req.body)
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
+    // scrape from req.url
+    request(req.link, function(req_err, req_res, data){
+      const $ = cheerio.load(data);
+      const podcast = {link};
+
+      podData.podcast = $("#podcast h1.showName").text();
+      podData.pid = $("#listenLater").attr("data-fid");
+      podData.about = $("#podcast p.about").text();
+      podData.img = $("#podcast #albumArt img").attr("src");
+
+      return podData;
+    })
+    // then save to db
+    .then(podcast =>{
+      db.Podcast
+        .create(req.body)
+        .then(dbModel => res.json(dbModel))
+        .catch(err => res.status(422).json(err));
+    });
   },
   update: function(req, res) {
     db.Podcast
