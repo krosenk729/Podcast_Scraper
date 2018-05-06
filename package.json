@@ -25,6 +25,7 @@
     "cheerio": "^1.0.0-rc.2",
     "express": "^4.15.4",
     "mongoose": "^5.0.11",
+    "npm": "^6.0.0",
     "request": "^2.85.0",
     "request-promise": "^4.2.2"
   }

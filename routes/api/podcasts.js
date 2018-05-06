@@ -16,9 +16,9 @@ router
   .delete(podcastController.remove);
 
 // =============================================================
-// Matches with '/api/podcast/eid/:id'
+// Matches with '/api/podcast/pid/:id'
 router
-  .route('/eid/:id')
-  .get(podcastController.findByEid);
+  .route('/pid/:id')
+  .get(podcastController.findByPid);
 
 module.exports = router;

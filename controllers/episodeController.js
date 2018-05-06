@@ -5,38 +5,38 @@ const db = require("../models");
 
 module.exports = {
   findAll: function(req, res) {
-    db.Podcast
+    db.Episode
       .find(req.query)
       .sort({ date: -1 })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   findById: function(req, res) {
-    db.Podcast
+    db.Episode
       .findById(req.params.id)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  findByPid: function(req, res) {
-    db.Podcast
-      .findOne({pid: req.params.id})
+  findByEid: function(req, res) {
+    db.Episode
+      .findOne({eid: req.params.id})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   create: function(req, res) {
-    db.Podcast
+    db.Episode
       .create(req.body)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   update: function(req, res) {
-    db.Podcast
+    db.Episode
       .findOneAndUpdate({ _id: req.params.id }, req.body)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   remove: function(req, res) {
-    db.Podcast
+    db.Episode
       .findById({ _id: req.params.id })
       .then(dbModel => dbModel.remove())
       .then(dbModel => res.json(dbModel))

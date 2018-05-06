@@ -1,14 +1,15 @@
 const router = require('express').Router();
-const podcastRoutes = require('./podcast');
+const podcastRoutes = require('./podcasts');
+const episodeRoutes = require('./episodes');
 const scrapesRoutes = require('./scrapes');
 
 // =============================================================
-// Podcast Link CRUD routes
+// Mounting Routes
+
 router.use('/podcast', podcastRoutes);
 
+router.use('/episode', episodeRoutes);
 
-// =============================================================
-// Podcast Scrape routes
 router.use('/scrapes', scrapesRoutes);
 
 router.get('/test', function(req, res) {

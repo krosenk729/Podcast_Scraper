@@ -2,7 +2,8 @@ const cheerio = require("cheerio");
 const rp = require("request-promise");
 const async = require("asyncawait/async");
 const await = require("asyncawait/await");
-const podcasts = {
+const db = require("./podcastController");
+/*const podcasts = {
   "Freakonomics": "https://www.stitcher.com/podcast/wnyc/freakonomics-radio",
   "Planet Money": "https://www.stitcher.com/podcast/national-public-radio/npr-planet-money-podcast",
   "Radiolab": "https://www.stitcher.com/podcast/wnycs-radiolab",
@@ -15,14 +16,14 @@ const podcasts = {
   "a16z": "https://www.stitcher.com/podcast/a16z-podcast",
   "Too Embarassed": "https://www.stitcher.com/podcast/vox/too-embarrassed-to-ask",
   "That Button": "https://www.stitcher.com/podcast/vox/whyd-you-push-that-button"
-};
+};*/
 
 // =============================================================
 // Doing Web Crawl
 
 module.exports = {
   scrapeAll: async (function(req, res){
-    const getPodcasts = async (function(uri, podname){
+    const scrapePodcasts = async (function(uri, podname){
       let scraped = [];
       const options = {
         uri,
@@ -51,7 +52,10 @@ module.exports = {
       return Promise.resolve(scraped);
     });
 
-    Promise.all( Object.keys(podcasts).map( podcast => getPodcasts(podcasts[podcast], podcast)) )
+    // const podcasts = db.findAll();
+
+    Promise.resolve( db.findAll() )
+    .then( podcasts => Promise.all( Object.keys(podcasts).map( podcast => scrapePodcasts(podcasts[podcast], podcast)) )  )
     .then( values => values.reduce((a, i) => [...a, ...i], []) )
     .then( values => res.json(values) )
     .catch( err => res.status(422).json(err) );
