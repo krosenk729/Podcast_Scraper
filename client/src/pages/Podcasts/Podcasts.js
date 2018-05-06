@@ -1,38 +1,36 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import API from "../../utils/API";
 import {TabPanel, Panel} from "../..components/Panel";
+import AddPodcast from "./AddPodcast";
 
 class Episode extends Component {
   state = {
-    scraped: [],
-    saves: []
+    podcasts: []
   };
 
   // **************************************************************/
   // Load Data on Component Mount  
 
   componentDidMount() {
-    this.loadPodcasts();
-  }
-
-  // load saved podcasts from endpoint
-  loadPodcasts = () => {
     API.getPodcasts()
     .then(res => this.setState({ podcasts: res.data }) )
-    .then(() => this.loadScrapes() )
     .catch(err => console.log(err));
-  };
+  }
 
-  // load new podcasts from endpoint 
-  loadScrapes = () => {
-    API.getScrapes()
-    .then(res => res.data )
-    .then(data => data.filter(scrape => this.state.podcasts.every(saved => saved.link != scrape.link) ))
-    .then(data => this.setState({ scrapes: data }))
+  // **************************************************************/
+  // Add and Delete Podcasts
+
+  handleAddPodcast = data =>{
+    API.savePodcast(data)
+    .then(res => this.setState({ podcasts: [res.data, ...this.state.podcasts]}))
     .catch(err => console.log(err));
-  };
+  }
 
+  handleDeletePodcast = index =>{
+    API.deletePodcast(index)
+    .then(res => this.setState({ podcasts: this.state.podcasts.filter(podcast => podcast._id !== index)}))
+    .catch(err => console.log(err));
+  }
 
   // **************************************************************/
   // Render
@@ -43,8 +41,11 @@ class Episode extends Component {
         <React.Fragment>
         <div>Hero</div>
         <TabPanel>
-        <Panel title="Katherine" index=0>
-        Katherine
+        <Panel title="Podcasts" index=0>
+        
+        </Panel>
+        <Panel title="Add New" index=0>
+        <AddPodcast handleAddPodcast={this.handleAddPodcast} />
         </Panel>
         </TabPanel>
         </React.Fragment>
