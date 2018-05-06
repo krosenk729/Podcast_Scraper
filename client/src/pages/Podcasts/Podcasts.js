@@ -5,7 +5,7 @@ import * from "../../components/Panel";
 import * from "../../components/Card";
 import AddPodcast from "./AddPodcast";
 
-class Episode extends Component {
+class Podcasts extends Component {
   state = {
     podcasts: []
   };
@@ -74,4 +74,4 @@ class Episode extends Component {
   }
 }
 
-export default Episode;
+export default Podcasts;
