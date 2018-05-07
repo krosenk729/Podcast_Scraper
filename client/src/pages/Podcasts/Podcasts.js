@@ -64,7 +64,7 @@ class Podcasts extends Component {
         <Panel title="Podcasts" index="0">
         {this.state.podcasts.map(renderPodcast)}
         </Panel>
-        <Panel title="Add New" index="0">
+        <Panel title="Add New" index="1">
         <AddPodcast handleAddPodcast={this.handleAddPodcast} />
         </Panel>
         </TabPanel>

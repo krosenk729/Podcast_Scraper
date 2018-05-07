@@ -3,9 +3,12 @@ import PropTypes from "prop-types";
 import "./Nav.css";
 
 export const Nav = props => (
-	<div className="nav">
-	{props.children}
-	</div>
+	<nav className="nav">
+		<ul>
+		<li>Podcasts</li>
+		<li>Episodes</li>
+		</ul>
+	</nav>
 );
 
 Nav.PropTypes = {
