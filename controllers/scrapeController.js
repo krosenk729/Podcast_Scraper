@@ -2,7 +2,7 @@ const cheerio = require("cheerio");
 const rp = require("request-promise");
 const async = require("asyncawait/async");
 const await = require("asyncawait/await");
-const db = require("./podcastController");
+const db = require("../models");
 const podcasts = {
   "Freakonomics": "https://www.stitcher.com/podcast/wnyc/freakonomics-radio",
   "Planet Money": "https://www.stitcher.com/podcast/national-public-radio/npr-planet-money-podcast",
@@ -21,8 +21,11 @@ const podcasts = {
 // =============================================================
 // Doing Web Crawl
 
+
 module.exports = {
   scrapeAll: async (function(req, res){
+    const podcasts = await db.Podcast.find().sort({ date: -1 });
+
     const scrapePodcasts = async (function(uri, podname){
       let scraped = [];
       const options = {
@@ -52,10 +55,7 @@ module.exports = {
       return Promise.resolve(scraped);
     });
 
-    // const podcasts = db.findAll();
-
-    Promise.resolve( db.findAll() )
-    .then( podcasts => Promise.all( Object.keys(podcasts).map( podcast => scrapePodcasts(podcasts[podcast], podcast)) )  )
+    Promise.all( Object.keys(podcasts).map( podcast => scrapePodcasts(podcasts[podcast], podcast)) )
     .then( values => values.reduce((a, i) => [...a, ...i], []) )
     .then( values => res.json(values) )
     .catch( err => res.status(422).json(err) );
