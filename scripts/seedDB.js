@@ -5,10 +5,8 @@ mongoose.Promise = global.Promise;
 // =============================================================
 // This file empties the collection and inserts the below
 mongoose.connect(
-  process.env.MONGODB_URI || 'mongodb://localhost/my_db',
-  { 
-    useMongoClient: true
-  }
+  process.env.MONGODB_URI || 'mongodb://heroku_hhxxf594:3ril9edkjuqc9vk44edbkob29u@ds259117.mlab.com:59117/heroku_hhxxf594' || 'mongodb://localhost/my_db',
+  {}
   );
 const podcastSeed = [
 {
@@ -79,7 +77,7 @@ const podcastSeed = [
 },
 {
   podcast: "That Button", 
-  link: "https://www.stitcher.com/podcast/vox/whyd-you-push-that-button"
+  link: "https://www.stitcher.com/podcast/vox/whyd-you-push-that-button",
   pid: +new Date() + Math.floor(Math.random()* 1000),
   img: ''
 }
@@ -142,22 +140,23 @@ db.Episode
 .remove({})
 .then(() => db.Episode.collection.insertMany(episodeSeed))
 .then(data => {
-  console.log(data.insertedIds.length + ' records inserted!');
+  console.log(data);
   process.exit(0);
+  
 })
 .catch(err => {
   console.error(err);
   process.exit(1);
 });
 
-db.Podcast
+/*db.Podcast
 .remove({})
 .then(() => db.Podcast.collection.insertMany(podcastSeed))
 .then(data => {
-  console.log(data.insertedIds.length + ' records inserted!');
+  console.log(data);
   process.exit(0);
 })
 .catch(err => {
   console.error(err);
   process.exit(1);
-});
+});*/
