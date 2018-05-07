@@ -3,7 +3,7 @@ const rp = require("request-promise");
 const async = require("asyncawait/async");
 const await = require("asyncawait/await");
 const db = require("./podcastController");
-/*const podcasts = {
+const podcasts = {
   "Freakonomics": "https://www.stitcher.com/podcast/wnyc/freakonomics-radio",
   "Planet Money": "https://www.stitcher.com/podcast/national-public-radio/npr-planet-money-podcast",
   "Radiolab": "https://www.stitcher.com/podcast/wnycs-radiolab",
@@ -16,7 +16,7 @@ const db = require("./podcastController");
   "a16z": "https://www.stitcher.com/podcast/a16z-podcast",
   "Too Embarassed": "https://www.stitcher.com/podcast/vox/too-embarrassed-to-ask",
   "That Button": "https://www.stitcher.com/podcast/vox/whyd-you-push-that-button"
-};*/
+};
 
 // =============================================================
 // Doing Web Crawl
