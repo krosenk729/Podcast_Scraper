@@ -18,8 +18,8 @@ export default {
   deletePodcast: function(id) {
     return axios.delete('/api/podcast/' + id);
   },
-  savePodcast: function(podcastData) {
-    return axios.post('/api/podcast', podcastData);
+  savePodcast: function(link) {
+    return axios.post('/api/podcast', link);
   },
   
   // **************************************************************/
@@ -34,10 +34,10 @@ export default {
   getSingleEID: function(eid) {
     return axios.get('/api/episode/eid/' + eid);
   },
-  deletePodcast: function(id) {
+  deleteEpisode: function(id) {
     return axios.delete('/api/episode/' + id);
   },
-  savePodcast: function(episodeData) {
+  saveEpisode: function(episodeData) {
     return axios.post('/api/episode', episodeData);
   }
 

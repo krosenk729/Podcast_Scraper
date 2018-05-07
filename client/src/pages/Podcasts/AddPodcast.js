@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import * from "../../components/Card";
+import {Card, CardBody} from "../../components/Card";
 
 class AddPodcast extends Component {
   state = {

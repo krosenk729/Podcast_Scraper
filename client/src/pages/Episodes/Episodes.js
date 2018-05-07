@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import API from "../../utils/API";
-import {TabPanel, Panel} from "../..components/Panel";
+import {TabPanel, Panel} from "../../components/TabbedPanel";
 
 class Episode extends Component {
   state = {
@@ -38,12 +38,11 @@ class Episode extends Component {
   // Render
 
   render() {
-    const tabs = 
     return (
         <React.Fragment>
         <div>Hero</div>
         <TabPanel>
-        <Panel title="Katherine" index=0>
+        <Panel title="Katherine" index="0">
         Katherine
         </Panel>
         </TabPanel>

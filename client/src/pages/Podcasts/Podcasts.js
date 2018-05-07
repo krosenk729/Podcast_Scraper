@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
-import * from "../../components/Hero";
-import * from "../../components/Panel";
-import * from "../../components/Card";
+import { Hero } from "../../components/Hero";
+import {Panel, TabPanel} from "../../components/TabbedPanel";
+import {Card, CardBody, CardActions, CardImg} from "../../components/Card";
 import AddPodcast from "./AddPodcast";
 
 class Podcasts extends Component {
@@ -38,7 +38,7 @@ class Podcasts extends Component {
   // Render
 
   render() {
-    renderPodcast = pod => (
+    const renderPodcast = pod => (
       <Card key={pod._id}>
       
       <CardImg img={pod.img} />
@@ -61,10 +61,10 @@ class Podcasts extends Component {
         <Hero><h1>Podcasts</h1></Hero>
 
         <TabPanel>
-        <Panel title="Podcasts" index=0>
+        <Panel title="Podcasts" index="0">
         {this.state.podcasts.map(renderPodcast)}
         </Panel>
-        <Panel title="Add New" index=0>
+        <Panel title="Add New" index="0">
         <AddPodcast handleAddPodcast={this.handleAddPodcast} />
         </Panel>
         </TabPanel>

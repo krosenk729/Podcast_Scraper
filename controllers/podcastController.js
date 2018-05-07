@@ -25,7 +25,12 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+
   create: function(req, res) {
+    if(!req.link){
+      res.status(400).json(err)
+    }
+
     // scrape from req.url
     request(req.link, function(req_err, req_res, data){
       const $ = cheerio.load(data);
@@ -46,6 +51,8 @@ module.exports = {
         .catch(err => res.status(422).json(err));
     });
   },
+
+
   update: function(req, res) {
     db.Podcast
       .findOneAndUpdate({ _id: req.params.id }, req.body)

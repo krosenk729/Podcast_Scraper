@@ -2,14 +2,12 @@ import React from "react";
 import PropTypes from "prop-types"; 
 import "./Panel.css";
 
-export const TabPanel = ({ children }) => {
-  return (
+export const TabPanel = props => (
     <div className="tab-panel">
-        {children}
+        {props.children}
     </div>
-  );
-};
+);
 
-Panel.TabPanel = {
+TabPanel.PropTypes = {
 	children: PropTypes.element.isRequired
 }
