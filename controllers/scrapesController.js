@@ -58,13 +58,5 @@ module.exports = {
     .then( values => res.json(values) )
     .catch( err => res.status(422).json(err) );
 
-    // const podcasts = db.findAll();
-
-    // Promise.resolve( db.findAll() )
-    // .then( podcasts => Promise.all( Object.keys(podcasts).map( podcast => scrapePodcasts(podcasts[podcast], podcast)) )  )
-    // .then( values => values.reduce((a, i) => [...a, ...i], []) )
-    // .then( values => res.json(values) )
-    // .catch( err => res.status(422).json(err) );
-
   })
 }
