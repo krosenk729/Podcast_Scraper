@@ -1,9 +1,6 @@
 .hero{
-	position: absolute;
-	left: 0;
-	right: 0;
-	top: 0;
-
+	position: relative;
+	width: 100%;
 	min-height: 45vh;
 
 	display: flex;

@@ -5,7 +5,7 @@ mongoose.Promise = global.Promise;
 // =============================================================
 // This file empties the collection and inserts the below
 mongoose.connect(
-  process.env.MONGODB_URI || 'mongodb://heroku_hhxxf594:3ril9edkjuqc9vk44edbkob29u@ds259117.mlab.com:59117/heroku_hhxxf594' || 'mongodb://localhost/my_db',
+  process.env.MONGODB_URI || 'mongodb://localhost/my_db',
   {}
   );
 const podcastSeed = [
@@ -136,20 +136,21 @@ const episodeSeed = [
 }
 ];
 
-db.Episode
-.remove({})
-.then(() => db.Episode.collection.insertMany(episodeSeed))
-.then(data => {
-  console.log(data);
-  process.exit(0);
+// db.Episode
+// .remove({})
+// .then(() => db.Episode.collection.insertMany(episodeSeed))
+// .then(data => {
+//   console.log(data);
+//   process.exit(0);
   
-})
-.catch(err => {
-  console.error(err);
-  process.exit(1);
-});
+// })
+// .catch(err => {
+//   console.error(err);
+//   process.exit(1);
+// });
+console.log(podcastSeed);
 
-/*db.Podcast
+db.Podcast
 .remove({})
 .then(() => db.Podcast.collection.insertMany(podcastSeed))
 .then(data => {
@@ -159,4 +160,4 @@ db.Episode
 .catch(err => {
   console.error(err);
   process.exit(1);
-});*/
+});
