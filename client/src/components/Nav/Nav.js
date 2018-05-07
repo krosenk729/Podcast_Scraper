@@ -4,13 +4,10 @@ import "./Nav.css";
 
 export const Nav = props => (
 	<nav className="nav">
-		<ul>
-		<li>Podcasts</li>
-		<li>Episodes</li>
-		</ul>
+	{props.children}
 	</nav>
 );
 
-Nav.PropTypes = {
+Nav.propTypes = {
 	children: PropTypes.element.isRequired
 }

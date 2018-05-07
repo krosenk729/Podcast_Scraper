@@ -12,8 +12,8 @@ export const Panel = props => (
 	</React.Fragment>
 );
 
-Panel.PropTypes = {
-	index: PropTypes.number,
+Panel.propTypes = {
+	index: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 	title: PropTypes.string.isRequired,
-	children: PropTypes.element.isRequired
+	children: PropTypes.any.isRequired
 }

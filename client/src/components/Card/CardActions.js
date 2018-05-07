@@ -7,6 +7,6 @@ export const CardActions = props => (
 	</div>
 );
 
-CardActions.PropTypes = {
-	children: PropTypes.element.isRequired
+CardActions.propTypes = {
+	children: PropTypes.any.isRequired
 }

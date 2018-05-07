@@ -8,6 +8,6 @@ export const Hero = props => (
 	</div>
 );
 
-Hero.PropTypes = {
+Hero.propTypes = {
 	children: PropTypes.element.isRequired
 }

@@ -14,6 +14,7 @@ class Podcasts extends Component {
   // Load Data on Component Mount  
 
   componentDidMount() {
+    console.log("mount");
     API.getPodcasts()
     .then(res => this.setState({ podcasts: res.data }) )
     .catch(err => console.log(err));

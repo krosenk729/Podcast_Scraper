@@ -7,6 +7,6 @@ export const CardBody = props => (
 	</div>
 );
 
-CardBody.PropTypes = {
-	children: PropTypes.element.isRequired
+CardBody.propTypes = {
+	children: PropTypes.any.isRequired
 }

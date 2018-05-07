@@ -7,6 +7,6 @@ export const CardImg = props => (
 	</div>
 );
 
-CardImg.PropTypes = {
+CardImg.propTypes = {
 	img: PropTypes.string.isRequired
 }

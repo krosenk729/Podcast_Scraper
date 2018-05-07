@@ -1,44 +1,44 @@
 import axios from 'axios';
-
+const temp = 'https://reactcast.herokuapp.com';
 export default {
 
   // **************************************************************/
   // Scraped Data
 
   getScrapes: function() {
-    return axios.get('/api/scrapes');
+    return axios.get( temp + '/api/scrapes');
   },
   
   // **************************************************************/
   // Podcasts 
 
   getPodcasts: function() {
-    return axios.get('/api/podcast');
+    return axios.get( temp + '/api/podcast');
   },
   deletePodcast: function(id) {
-    return axios.delete('/api/podcast/' + id);
+    return axios.delete( temp + '/api/podcast/' + id);
   },
   savePodcast: function(link) {
-    return axios.post('/api/podcast', link);
+    return axios.post( temp + '/api/podcast', link);
   },
   
   // **************************************************************/
   // Saved Episodes
 
   getEpisodes: function() {
-    return axios.get('/api/episode');
+    return axios.get( temp + '/api/episode');
   },
   getSingleEpisode: function(id) {
-    return axios.get('/api/episode/' + id);
+    return axios.get( temp + '/api/episode/' + id);
   },
   getSingleEID: function(eid) {
-    return axios.get('/api/episode/eid/' + eid);
+    return axios.get( temp + '/api/episode/eid/' + eid);
   },
   deleteEpisode: function(id) {
-    return axios.delete('/api/episode/' + id);
+    return axios.delete( temp + '/api/episode/' + id);
   },
   saveEpisode: function(episodeData) {
-    return axios.post('/api/episode', episodeData);
+    return axios.post( temp + '/api/episode', episodeData);
   }
 
 };

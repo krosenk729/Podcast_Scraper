@@ -8,6 +8,6 @@ export const Card = props => (
 	</div>
 );
 
-Card.PropTypes = {
+Card.propTypes = {
 	children: PropTypes.element.isRequired
 }

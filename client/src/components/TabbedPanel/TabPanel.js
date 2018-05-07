@@ -8,6 +8,6 @@ export const TabPanel = props => (
     </div>
 );
 
-TabPanel.PropTypes = {
-	children: PropTypes.element.isRequired
+TabPanel.propTypes = {
+	children: PropTypes.any.isRequired
 }
