@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import API from "../../utils/API";
+import { Hero } from "../../components/Hero";
 import {TabPanel, Panel} from "../../components/TabbedPanel";
+import {Card, CardBody, CardActions, CardImg} from "../../components/Card";
 
 class Episode extends Component {
   state = {
@@ -30,29 +32,81 @@ class Episode extends Component {
   loadScrapes = () => {
     API.getScrapes()
     .then(res => res.data )
-    .then(data => data.filter(scrape => this.state.saves.every(saved => saved.link != scrape.link) ))
+    .then(data => data.map(scrape =>{
+      scrape.isSaved = this.state.saves.every(saved => saved.link != scrape.link);
+      return scrape;
+    }))
     .then(data => this.setState({ scrapes: data }))
     .catch(err => console.log(err));
   };
 
+  // **************************************************************/
+  // Handle Saving and Unsaving an Epsiode
+
+  handleSaveEpisode = scrape => {
+    API.saveEpisode(scrape)
+      .then(res => this.setState({saves: [...this.state.saves, res]}))
+      .catch(err => console.log(err));
+  }
+
+  handleUnsaveEpisode = index => {
+    API.deleteEpisode(index)
+    .then(res => this.setState({ saves: this.state.saves.filter(save => save._id !== index) }))
+    .catch(err => console.log(err));
+  }
 
   // **************************************************************/
   // Render
 
   render() {
+    const renderScrape = pod => (
+      <Card key={pod.eid}>
+      
+      <CardImg img={pod.img} />
+
+      <CardBody>
+      <h3>{pod.episode}</h3>
+      <a href={pod.link} target="_blank">{pod.podcast}</a>
+      </CardBody>
+
+      <CardActions>
+      {pod.isSaved ? 
+      <button className="btn" onClick={()=>this.handleSaveEpisode(pod)}> Save </button> :
+      <button className="btn" disabled> Saved </button>
+      }
+      </CardActions>
+
+      </Card>
+      )
+
+    const renderSave = pod => (
+      <Card key={pod._id}>
+      
+      <CardImg img={pod.img} />
+
+      <CardBody>
+      <h3>{pod.podcast}</h3>
+      <a href={pod.link} target="_blank">{pod.link}</a>
+      </CardBody>
+
+      <CardActions>
+      <button className="btn" onClick={()=>this.handleDeletePodcast(pod._id)}> X </button>
+      </CardActions>
+
+      </Card>
+      )
+
     return (
         <React.Fragment>
-        <div>Hero</div>
+
+        <Hero><h1>Episodes</h1></Hero>
+
         <TabPanel>
         <Panel title="New Episodes" index="0">
-        {this.state.scrapes.map(pod => (
-          <div key={pod.eid}>{pod.podcast}</div>
-          ))}
+        {this.state.scrapes.map(renderScrape)}
         </Panel>
-        <Panel title="Katherine" index="1">
-        {this.state.saves.map(pod => (
-          <div key={pod.eid}>{pod.podcast}</div>
-          ))}
+        <Panel title="Saved Episodes" index="1">
+        {this.state.saves.map(renderSave)}
         </Panel>
         </TabPanel>
         </React.Fragment>
