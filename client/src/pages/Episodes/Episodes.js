@@ -95,7 +95,8 @@ class Episode extends Component {
 
       <CardBody>
       <h3>{pod.episode}</h3>
-
+      <a href={pod.link} target="_blank">{pod.podcast}</a>
+      {pod.eid && pod.pid ? renderEmbedPlayer(pod.eid, pod.pid, pod.episode) : null}
       </CardBody>
 
       <CardActions>
@@ -103,6 +104,15 @@ class Episode extends Component {
       </CardActions>
 
       </Card>
+      )
+
+    const renderEmbedPlayer = (eid, pid, episode) => (
+        <iframe 
+        src={`https://app.stitcher.com/splayer/f/${pid}/${eid}`} 
+        title={episode} 
+        frameBorder="0" 
+        scrolling="no">
+        </iframe>
       )
 
     return (
