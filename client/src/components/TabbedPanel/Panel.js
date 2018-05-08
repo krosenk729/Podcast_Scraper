@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 export const Panel = props => (
 	<React.Fragment>
 	<label htmlFor={"tab-" + props.index} tabIndex="0"></label>
-	<input id={"tab-" + props.index} checked={props.index == "0"} type="radio" name="tabs" aria-hidden="true" />
+	<input id={"tab-" + props.index} defaultChecked={props.index == "0"} type="radio" name="tabs" aria-hidden="true" />
 	<h3 className="tab-title">{props.title}</h3>
 	<div>
 	{props.children}

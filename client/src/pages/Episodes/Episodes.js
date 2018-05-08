@@ -5,7 +5,7 @@ import {TabPanel, Panel} from "../../components/TabbedPanel";
 
 class Episode extends Component {
   state = {
-    scraped: [],
+    scrapes: [],
     saves: []
   };
 
@@ -31,7 +31,7 @@ class Episode extends Component {
     API.getScrapes()
     .then(res => res.data )
     .then(data => data.filter(scrape => this.state.saves.every(saved => saved.link != scrape.link) ))
-    .then(data => this.setState({ scraped: data }))
+    .then(data => this.setState({ scrapes: data }))
     .catch(err => console.log(err));
   };
 
@@ -45,6 +45,11 @@ class Episode extends Component {
         <div>Hero</div>
         <TabPanel>
         <Panel title="Katherine" index="0">
+        {this.state.saves.map(pod => (
+          <div key={pod.eid}>{pod.name}</div>
+          ))}
+        </Panel>
+        <Panel title="Katherine" index="1">
         Katherine
         </Panel>
         </TabPanel>
