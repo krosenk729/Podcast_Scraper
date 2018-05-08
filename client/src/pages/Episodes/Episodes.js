@@ -21,7 +21,7 @@ class Episode extends Component {
   // load saved podcasts from endpoint
   // then load scrapes
   loadPodcasts = () => {
-    API.getPodcasts()
+    API.getEpisodes()
     .then(res => this.setState({ saves: res.data }) )
     .then(() => this.loadScrapes() )
     .catch(err => console.log(err));
@@ -49,12 +49,9 @@ class Episode extends Component {
   // Handle Saving and Unsaving an Epsiode
 
   handleSaveEpisode = scrape => {
-    scrape.isSaved = true;
-
-    this.setState({scrapes: this.state.scrapes.map(scrape => scrape)})
-
     API.saveEpisode(scrape)
       .then(res => this.setState({saves: [...this.state.saves, scrape]}))
+      .then(() => this.setState({scrapes: this.state.scrapes.map(this.checkScrapesForPod)}))
       .catch(err => console.log(err));
   }
 
@@ -100,7 +97,7 @@ class Episode extends Component {
       </CardBody>
 
       <CardActions>
-      <button className="btn" onClick={()=>this.handleDeletePodcast(pod._id)}> X </button>
+      <button className="btn" onClick={()=>this.handleUnsaveEpisode(pod._id)}> X </button>
       </CardActions>
 
       </Card>
