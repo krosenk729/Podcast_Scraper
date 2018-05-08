@@ -44,13 +44,15 @@ class Episode extends Component {
         <React.Fragment>
         <div>Hero</div>
         <TabPanel>
-        <Panel title="Katherine" index="0">
-        {this.state.saves.map(pod => (
-          <div key={pod.eid}>{pod.name}</div>
+        <Panel title="New Episodes" index="0">
+        {this.state.scrapes.map(pod => (
+          <div key={pod.eid}>{pod.podcast}</div>
           ))}
         </Panel>
         <Panel title="Katherine" index="1">
-        Katherine
+        {this.state.saves.map(pod => (
+          <div key={pod.eid}>{pod.podcast}</div>
+          ))}
         </Panel>
         </TabPanel>
         </React.Fragment>
