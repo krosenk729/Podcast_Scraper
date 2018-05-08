@@ -32,20 +32,29 @@ class Episode extends Component {
   loadScrapes = () => {
     API.getScrapes()
     .then(res => res.data )
-    .then(data => data.map(scrape =>{
-      scrape.isSaved = this.state.saves.every(saved => saved.link != scrape.link);
-      return scrape;
-    }))
+    .then(data => data.map(this.checkScrapesForPod))
     .then(data => this.setState({ scrapes: data }))
     .catch(err => console.log(err));
   };
 
   // **************************************************************/
+  // Check if Scrape Exists
+
+  checkScrapesForPod = scrape =>{
+      scrape.isSaved = this.state.saves.some(saved => saved.link === scrape.link);
+      return scrape;
+  }
+
+  // **************************************************************/
   // Handle Saving and Unsaving an Epsiode
 
   handleSaveEpisode = scrape => {
+    scrape.isSaved = true;
+
+    this.setState({scrapes: this.state.scrapes.map(scrape => scrape)})
+
     API.saveEpisode(scrape)
-      .then(res => this.setState({saves: [...this.state.saves, res]}))
+      .then(res => this.setState({saves: [...this.state.saves, scrape]}))
       .catch(err => console.log(err));
   }
 
@@ -71,8 +80,8 @@ class Episode extends Component {
 
       <CardActions>
       {pod.isSaved ? 
-      <button className="btn" onClick={()=>this.handleSaveEpisode(pod)}> Save </button> :
-      <button className="btn" disabled> Saved </button>
+      <button className="btn" disabled> Saved </button> :
+      <button className="btn" onClick={()=>this.handleSaveEpisode(pod)}> Save </button> 
       }
       </CardActions>
 
@@ -85,8 +94,8 @@ class Episode extends Component {
       <CardImg img={pod.img} />
 
       <CardBody>
-      <h3>{pod.podcast}</h3>
-      <a href={pod.link} target="_blank">{pod.link}</a>
+      <h3>{pod.episode}</h3>
+
       </CardBody>
 
       <CardActions>

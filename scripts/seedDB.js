@@ -13,73 +13,73 @@ const podcastSeed = [
   podcast: "Freakonomics", 
   link: "https://www.stitcher.com/podcast/wnyc/freakonomics-radio",
   pid: +new Date() + Math.floor(Math.random()* 1000),
-  img: ''
+  img: "https://secureimg.stitcher.com/feedimagesplain328/11394.jpg"
 },
 {
   podcast: "Planet Money", 
   link: "https://www.stitcher.com/podcast/national-public-radio/npr-planet-money-podcast",
   pid: +new Date() + Math.floor(Math.random()* 1000),
-  img: ''
+  img: "https://secureimg.stitcher.com/feedimagesplain328/7668.jpg"
 },
 {
   podcast: "Radiolab", 
   link: "https://www.stitcher.com/podcast/wnycs-radiolab",
   pid: +new Date() + Math.floor(Math.random()* 1000),
-  img: ''
+  img: "https://www.stitcher.com/podcast/wnycs-radiolab/e/54176196"
 },
 {
   podcast: "Greater Than Code", 
   link: "https://www.stitcher.com/podcast/therubyrep/greater-than-code",
   pid: +new Date() + Math.floor(Math.random()* 1000),
-  img: ''
+  img: "https://secureimg.stitcher.com/feedimagesplain328/124034.jpg"
 },
 {
   podcast: "More Perfect", 
   link: "https://www.stitcher.com/podcast/radiolab-presents-more-perfect",
   pid: +new Date() + Math.floor(Math.random()* 1000),
-  img: ''
+  img: "https://secureimg.stitcher.com/feedimagesplain328/91288.jpg"
 },
 {
   podcast: "Front End Happy Hour", 
   link: "https://www.stitcher.com/podcast/front-end-happy-hour",
   pid: +new Date() + Math.floor(Math.random()* 1000),
-  img: ''
+  img: "https://secureimg.stitcher.com/feedimagesplain328/84725.jpg"
 },
 {
   podcast: "Hidden Brain", 
   link: "https://www.stitcher.com/podcast/national-public-radio/hidden-brain",
   pid: +new Date() + Math.floor(Math.random()* 1000),
-  img: ''
+  img: "https://secureimg.stitcher.com/feedimagesplain328/71231.jpg"
 },
 {
   podcast: "99 Percent Invisible", 
   link: "https://www.stitcher.com/podcast/prx/99-invisible",
   pid: +new Date() + Math.floor(Math.random()* 1000),
-  img: ''
+  img: "https://secureimg.stitcher.com/feedimagesplain328/16374.jpg"
 },
 {
   podcast: "Reply All", 
   link: "https://www.stitcher.com/podcast/gimlet/reply-all",
   pid: +new Date() + Math.floor(Math.random()* 1000),
-  img: ''
+  img: "https://secureimg.stitcher.com/feedimagesplain328/56516.jpg"
 },
 {
   podcast: "a16z", 
   link: "https://www.stitcher.com/podcast/a16z-podcast",
   pid: +new Date() + Math.floor(Math.random()* 1000),
-  img: ''
+  img: "https://secureimg.stitcher.com/feedimagesplain328/50475.jpg"
 },
 {
   podcast: "Too Embarassed", 
   link: "https://www.stitcher.com/podcast/vox/too-embarrassed-to-ask",
   pid: +new Date() + Math.floor(Math.random()* 1000),
-  img: ''
+  img: "https://secureimg.stitcher.com/feedimagesplain328/81305.jpg"
 },
 {
   podcast: "That Button", 
   link: "https://www.stitcher.com/podcast/vox/whyd-you-push-that-button",
   pid: +new Date() + Math.floor(Math.random()* 1000),
-  img: ''
+  img: "https://secureimg.stitcher.com/feedimagesplain328/154009.jpg"
 }
 ]
 

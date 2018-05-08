@@ -9,6 +9,7 @@ const episodeSchema = new Schema({
   pid: String,
   duration: String,
   img: String,
+  isSaved: Boolean,
   saved: { type: Date, default: Date.now }
 });
 
