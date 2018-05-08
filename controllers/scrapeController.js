@@ -42,9 +42,9 @@ module.exports = {
 
     db.Podcast.find()
     .sort({ date: -1 })
-    .then(podcasts => Promise
-        .all( Object.keys(podcasts)
-        .map( podcast => scrapePodcasts(podcasts[podcast], podcast)) )
+    .then(podcasts => Promise.all( 
+          podcasts.map( podcast => scrapePodcasts(podcast.link, podcast.podcast)) 
+        )
     )
     .then( values => values.reduce((a, i) => [...a, ...i], []) )
     .then( values => res.json(values) )
