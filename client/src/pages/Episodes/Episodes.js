@@ -17,19 +17,21 @@ class Episode extends Component {
   }
 
   // load saved podcasts from endpoint
+  // then load scrapes
   loadPodcasts = () => {
     API.getPodcasts()
-    .then(res => this.setState({ podcasts: res.data }) )
+    .then(res => this.setState({ saves: res.data }) )
     .then(() => this.loadScrapes() )
     .catch(err => console.log(err));
   };
 
-  // load new podcasts from endpoint 
+  // load scraped podcasts from endpoint 
+  // and identify as saved/unsaved
   loadScrapes = () => {
     API.getScrapes()
     .then(res => res.data )
-    .then(data => data.filter(scrape => this.state.podcasts.every(saved => saved.link != scrape.link) ))
-    .then(data => this.setState({ scrapes: data }))
+    .then(data => data.filter(scrape => this.state.saves.every(saved => saved.link != scrape.link) ))
+    .then(data => this.setState({ scraped: data }))
     .catch(err => console.log(err));
   };
 
