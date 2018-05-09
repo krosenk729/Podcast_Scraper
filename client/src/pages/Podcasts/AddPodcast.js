@@ -15,17 +15,16 @@ class AddPodcast extends Component {
   }
 
   handleChange = event =>{
-    console.log(event);
-
     const { name, value } = event.target;
-    console.log(name, value);
     this.setState({[name]: value});
-
-
   }
 
   handleSubmit = data =>{
+    console.log(this.state.link);
+    // let url = "http://anyorigin.com/go?url=" + encodeURIComponent(this.state.link) + "&callback=?";
     // this.props.handleAddPodcast
+    console.log( Scrape.getPodData(this.state.link) );
+    // console.log(url);
   }
 
   // **************************************************************/
@@ -36,7 +35,7 @@ class AddPodcast extends Component {
         <Card>
         <CardBody>
         <h3>Add a Podcast</h3>
-
+        <mark>https://www.stitcher.com/podcast/wnyc/freakonomics-radio</mark>
         <label htmlFor="link">Stitcher Link:</label>
         <input onChange={this.handleChange} type="text" name="link" id="link" />
 

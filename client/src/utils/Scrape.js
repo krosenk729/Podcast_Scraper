@@ -10,6 +10,7 @@ export default {
     // $.getJSON('http://anyorigin.com/go?url=https%3A//www.stitcher.com/podcast/this-is-love&callback=?', function(data){
     //   $('#output').html(data.contents);
     // });
+    const url = "http://anyorigin.com/go?url=" + encodeURIComponent(link) + "&callback=?";
     const body = await axios.get(link);
     const $ = cheerio.load(body);
     const podData = {link};
