@@ -11,7 +11,7 @@ export default {
     //   $('#output').html(data.contents);
     // });
     const url = "http://anyorigin.com/go?url=" + encodeURIComponent(link) + "&callback=?";
-    const body = await axios.get(link);
+    const body = await axios.get(url);
     const $ = cheerio.load(body);
     const podData = {link};
 
