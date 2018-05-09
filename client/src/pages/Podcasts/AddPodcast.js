@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import {Card, CardBody} from "../../components/Card";
+import Scrape from "../../utils/Scrape";
 
 class AddPodcast extends Component {
   state = {
@@ -13,8 +14,14 @@ class AddPodcast extends Component {
     this.setState({link: "https://www.stitcher.com/podcast/"});
   }
 
-  handleChange = data =>{
-    
+  handleChange = event =>{
+    console.log(event);
+
+    const { name, value } = event.target;
+    console.log(name, value);
+    this.setState({[name]: value});
+
+
   }
 
   handleSubmit = data =>{
@@ -30,11 +37,11 @@ class AddPodcast extends Component {
         <CardBody>
         <h3>Add a Podcast</h3>
 
-        <input onChange={this.handleChange} type="text" name="link" id="link" />
         <label htmlFor="link">Stitcher Link:</label>
+        <input onChange={this.handleChange} type="text" name="link" id="link" />
 
         <button className="btn" onClick={this.handleSubmit}>Add Podcast</button>
-
+        <small>{this.state.link}</small>
         </CardBody>
         </Card>
     );

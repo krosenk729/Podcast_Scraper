@@ -11,7 +11,7 @@ export default {
     //   $('#output').html(data.contents);
     // });
     const body = await axios.get(link);
-    const $ = cheerio.load(res);
+    const $ = cheerio.load(body);
     const podData = {link};
 
     podData.podcast = $("#podcast h1.showName").text();
