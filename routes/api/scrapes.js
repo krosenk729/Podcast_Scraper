@@ -7,6 +7,12 @@ router.route('/')
   .get(scrapeController.scrapeAll);
 
 // =============================================================
+// Matches with '/api/scrapes/search/:link'
+router
+  .route('/search/:link')
+  .get(scrapeController.scrapeOne);
+
+// =============================================================
 // Export
 
 module.exports = router;

@@ -7,6 +7,10 @@ export default {
   getScrapes: function() {
     return axios.get('/api/scrapes');
   },
+  getSingleScrape: function(link){
+    console.log('API FILE', '/api/scrapes/search/' + encodeURIComponent(link));
+    return axios.get('/api/scrapes/search/' + encodeURIComponent(link), link);
+  },
   
   // **************************************************************/
   // Podcasts 

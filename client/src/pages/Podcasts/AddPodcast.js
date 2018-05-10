@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import {Card, CardBody} from "../../components/Card";
 import Scrape from "../../utils/Scrape";
+import API from "../../utils/API";
 
 class AddPodcast extends Component {
   state = {
-    link: ""
+    link: "https://www.stitcher.com/podcast/wnyc/freakonomics-radio"
   };
 
   // **************************************************************/
@@ -20,11 +21,12 @@ class AddPodcast extends Component {
   }
 
   handleSubmit = data =>{
-    console.log(this.state.link);
+    // console.log(this.state.link);
     // let url = "http://anyorigin.com/go?url=" + encodeURIComponent(this.state.link) + "&callback=?";
     // this.props.handleAddPodcast
-    console.log( Scrape.getPodData(this.state.link) );
+    // Scrape.getPodData(this.state.link).then(console.log);
     // console.log(url);
+    API.getSingleScrape(this.state.link).then(console.log)
   }
 
   // **************************************************************/
@@ -35,9 +37,14 @@ class AddPodcast extends Component {
         <Card>
         <CardBody>
         <h3>Add a Podcast</h3>
-        <mark>https://www.stitcher.com/podcast/wnyc/freakonomics-radio</mark>
         <label htmlFor="link">Stitcher Link:</label>
-        <input onChange={this.handleChange} type="text" name="link" id="link" />
+        <input 
+        onChange={this.handleChange} 
+        type="text" 
+        name="link" 
+        id="link"
+        value="https://www.stitcher.com/podcast/wnyc/freakonomics-radio"
+         />
 
         <button className="btn" onClick={this.handleSubmit}>Add Podcast</button>
         <small>{this.state.link}</small>
