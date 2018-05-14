@@ -4,6 +4,7 @@ import { Hero } from "../../components/Hero";
 
 import {Panel, TabPanel} from "../../components/TabbedPanel";
 import {Card, CardBody, CardActions, CardImg} from "../../components/Card";
+import {FigureCircle} from "../../components/Figure";
 import AddPodcast from "./AddPodcast";
 
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';

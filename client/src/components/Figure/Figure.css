@@ -6,11 +6,9 @@ figure, .figure{
 	min-width: 0;
 	float: left;
 }
-
-.figure-media{
-	/* control overall width */
-	width: 500px;
-
+.figure__image{
+	width: 100%;
+	
 	/* overlay */
 	background-image: url('https://www.thebalance.com/static/2.89.0/image/cropped-circle/circle-coral.svg');
 
@@ -21,7 +19,7 @@ figure, .figure{
 	background-repeat: no-repeat;
 }
 
-.figure-media > img{
+.figure__image > img{
 	display: block;
 	width: 100%;
 	height: auto;
