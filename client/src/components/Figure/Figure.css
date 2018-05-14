@@ -1,0 +1,67 @@
+figure, .figure{
+	position: relative;
+	display: block;
+
+	max-width: 100%;
+	min-width: 0;
+	float: left;
+}
+
+.figure-media{
+	/* control overall width */
+	width: 500px;
+
+	/* overlay */
+	background-image: url('https://www.thebalance.com/static/2.89.0/image/cropped-circle/circle-coral.svg');
+
+	padding-top: 66.6666%;
+	position: relative;
+	padding-right: .5rem;
+	background-position: 85% 75%;
+	background-repeat: no-repeat;
+}
+
+.figure-media > img{
+	display: block;
+	width: 100%;
+	height: auto;
+
+	position: absolute;
+	top: 0;
+	left: 0;
+
+	/*clip to oval*/
+	-webkit-clip-path: circle(51% at 48% 70%);
+	clip-path: circle(51% at 48% 70%);
+	mix-blend-mode: multiply;
+}
+
+
+.figure-caption{
+	position: absolute;
+	font-size: 1.75rem;
+	color: #8CAFD3;
+	text-align: left;
+	padding: 0 .3rem;
+	bottom: 0;
+	left: 0;
+	line-height: 1.25;
+	background: rgba(60,75,90,.8);
+}
+
+.figure-caption .figure-caption__pre-hover{
+	display: block;
+	position: relative;
+	left: 1px;
+	letter-spacing: 2px;
+}
+
+.figure-caption .figure-caption__post-hover{
+	display: none;
+	color: #fff;
+	font-family: Rubik,Arial,sans-serif;
+}
+
+.figure-caption:hover .figure-caption__post-hover{
+	display: block;
+}

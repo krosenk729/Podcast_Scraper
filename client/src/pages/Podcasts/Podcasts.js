@@ -1,9 +1,13 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
 import { Hero } from "../../components/Hero";
+
 import {Panel, TabPanel} from "../../components/TabbedPanel";
 import {Card, CardBody, CardActions, CardImg} from "../../components/Card";
 import AddPodcast from "./AddPodcast";
+
+import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+import faCoffee from '@fortawesome/fontawesome-free-solid/faCoffee';
 
 class Podcasts extends Component {
   state = {
@@ -50,7 +54,9 @@ class Podcasts extends Component {
       </CardBody>
 
       <CardActions>
-      <button className="btn" onClick={()=>this.handleDeletePodcast(pod._id)}> X </button>
+      <button className="btn" onClick={()=>this.handleDeletePodcast(pod._id)}>
+      <FontAwesomeIcon icon={faCoffee} />
+      </button>
       </CardActions>
 
       </Card>

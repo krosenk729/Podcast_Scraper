@@ -1,0 +1,30 @@
+.card{
+	position: relative;
+	display: flex;
+	justify-content: space-between;
+}
+
+.card__image{
+	flex: 1 1 30%;
+}
+
+.card__image > img {
+	width: 100%;
+	height: auto;
+	padding: 10px;
+}
+
+.card__body{
+	flex: 2 1 80%;
+}
+
+.card__actions{
+	flex: 1 1 40%;
+}
+
+.card__footer{
+	position: absolute;
+	left: 10px;
+	right: 10px;
+	top: 100%;
+}
