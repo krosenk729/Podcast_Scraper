@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types"; 
 
 export const CardActions = props => (
-	<div className="card-actions">
+	<div className="card__actions">
 	{props.children}
 	</div>
 );

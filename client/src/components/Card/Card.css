@@ -4,7 +4,7 @@
 	justify-content: space-between;
 }
 
-.card__image{
+.card__image, .card__figure{
 	flex: 1 1 30%;
 }
 

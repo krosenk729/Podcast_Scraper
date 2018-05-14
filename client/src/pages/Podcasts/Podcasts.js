@@ -3,8 +3,8 @@ import API from "../../utils/API";
 import { Hero } from "../../components/Hero";
 
 import {Panel, TabPanel} from "../../components/TabbedPanel";
-import {Card, CardBody, CardActions, CardImg} from "../../components/Card";
-import {FigureCircle} from "../../components/Figure";
+import {Card, CardBody, CardActions, CardImg, CardFigure} from "../../components/Card";
+// import {FigureCircle} from "../../components/Figure";
 import AddPodcast from "./AddPodcast";
 
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
@@ -46,8 +46,8 @@ class Podcasts extends Component {
   render() {
     const renderPodcast = pod => (
       <Card key={pod._id}>
-      
-      <CardImg img={pod.img} />
+
+      <CardFigure img={pod.img} />
 
       <CardBody>
       <h3>{pod.podcast}</h3>

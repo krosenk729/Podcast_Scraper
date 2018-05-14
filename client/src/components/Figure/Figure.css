@@ -1,16 +1,14 @@
 figure, .figure{
 	position: relative;
 	display: block;
-
-	max-width: 100%;
-	min-width: 0;
-	float: left;
+	width: 100%;
 }
+
 .figure__image{
 	width: 100%;
 	
 	/* overlay */
-	background-image: url('https://www.thebalance.com/static/2.89.0/image/cropped-circle/circle-coral.svg');
+	background-image: url("/circle-coral.svg");
 
 	padding-top: 66.6666%;
 	position: relative;

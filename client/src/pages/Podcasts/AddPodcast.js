@@ -38,7 +38,6 @@ class AddPodcast extends Component {
         type="text" 
         name="link" 
         id="link"
-        value="https://www.stitcher.com/podcast/wnyc/freakonomics-radio"
          />
 
         <button className="btn" onClick={this.handleSubmit}>Add Podcast</button>
