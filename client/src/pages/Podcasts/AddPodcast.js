@@ -25,16 +25,24 @@ class AddPodcast extends Component {
 
   handleChange = event =>{
     const newState = {};
-    const { name, value } = event.target;
-    newState[name] = value;
+    const { name, link } = event.target;
+    newState[name] = link;
 
-    if( event.target.value && Util.checkStitchUrl( event.target.value)){
+    if( link && Util.checkStitchUrl( link)){
       newState.linkIsValid = true;
+      this.handleScrape(link);
     } else {
       newState.linkIsValid = false;
+      newState.tempPod = {};
     }
+
     this.setState(newState);
   }
+
+  handleScrape = link =>{
+    API.getSingleScrape(link)
+    .then(scrape =>  this.setState({tempPod: scrape.data}));
+  } 
 
   handleSubmit = data =>{
     API.getSingleScrape(this.state.link)
