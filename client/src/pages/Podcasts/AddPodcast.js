@@ -6,6 +6,7 @@ import * as Util from "../../utils/Util";
 class AddPodcast extends Component {
   state = {
     link: "",
+    linkIsValid: false,
     tempPod: {
       about: "",
       img: "",
@@ -19,13 +20,20 @@ class AddPodcast extends Component {
   // Add and Delete Podcasts
 
   resetForm = () => {
-    this.setState({link: "https://www.stitcher.com/podcast/"});
+    this.setState({link: "", linkIsValid: false});
   }
 
   handleChange = event =>{
+    const newState = {};
     const { name, value } = event.target;
-    console.log(name, value);
-    this.setState({[name]: value});
+    newState[name] = value;
+
+    if( event.target.value && Util.checkStitchUrl( event.target.value)){
+      newState.linkIsValid = true;
+    } else {
+      newState.linkIsValid = false;
+    }
+    this.setState(newState);
   }
 
   handleSubmit = data =>{
@@ -51,11 +59,12 @@ class AddPodcast extends Component {
          />
 
         <button className="btn" onClick={this.handleSubmit}>Add Podcast</button>
-        <small>{this.state.link}</small>
         </CardBody>
         <CardFooter>
         <a href={this.state.link} target="_blank" rel="noopener noreferrer">{this.state.link}</a>
-        {this.state.tempPod ? <p>{this.state.tempPod.podcast}</p> : null}
+        {this.state.tempPod ? 
+          <p>{this.state.tempPod.podcast}</p> : 
+          null}
         </CardFooter>
         </Card>
     );
