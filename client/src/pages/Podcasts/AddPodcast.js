@@ -1,10 +1,18 @@
 import React, { Component } from "react";
-import {Card, CardBody} from "../../components/Card";
+import {Card, CardBody, CardFooter} from "../../components/Card";
 import API from "../../utils/API";
+import * as Util from "../../utils/Util";
 
 class AddPodcast extends Component {
   state = {
-    link: "https://www.stitcher.com/podcast/wnyc/freakonomics-radio"
+    link: "",
+    tempPod: {
+      about: "",
+      img: "",
+      link: "",
+      pid: "",
+      podcast: ""
+    }
   };
 
   // **************************************************************/
@@ -16,11 +24,13 @@ class AddPodcast extends Component {
 
   handleChange = event =>{
     const { name, value } = event.target;
+    console.log(name, value);
     this.setState({[name]: value});
   }
 
   handleSubmit = data =>{
-    API.getSingleScrape(this.state.link).then(console.log)
+    API.getSingleScrape(this.state.link)
+    .then(scrape =>  this.setState({tempPod: scrape.data}));
   }
 
   // **************************************************************/
@@ -43,6 +53,10 @@ class AddPodcast extends Component {
         <button className="btn" onClick={this.handleSubmit}>Add Podcast</button>
         <small>{this.state.link}</small>
         </CardBody>
+        <CardFooter>
+        <a href={this.state.link} target="_blank" rel="noopener noreferrer">{this.state.link}</a>
+        {this.state.tempPod ? <p>{this.state.tempPod.podcast}</p> : null}
+        </CardFooter>
         </Card>
     );
   }

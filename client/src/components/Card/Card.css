@@ -2,6 +2,9 @@
 	position: relative;
 	display: flex;
 	justify-content: space-between;
+
+	margin-bottom: 2em;
+	padding-bottom: 1em;
 }
 
 .card__image, .card__figure{
@@ -27,4 +30,6 @@
 	left: 10px;
 	right: 10px;
 	top: 100%;
+
+	min-height: 2em;
 }
