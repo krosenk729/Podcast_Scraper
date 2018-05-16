@@ -63,11 +63,12 @@ module.exports = {
     
     const options = {
       uri: req.params.link,
-      transform: (body) => cheerio.load(body)
+      transform: (body) => cheerio.load(body, { normalizeWhitespace: true })
     };
 
     rp(options).then($ => {
-      console.log('testing', req.params);
+      console.log('\n \ntesting', req.params);
+      // console.log('cheerio', $);
       // console.log(decodeURIComponent(req.params)[0])
       // console.log(Object.keys(decodeURIComponent(req.params)));
       let pod = {link: req.params.link};
@@ -76,7 +77,14 @@ module.exports = {
       pod.about = $("#podcast p.about").text();
       pod.img = $("#podcast #albumArt img").attr("src");
 
-      console.log('inside await podcast', pod);
+      // console.log('inside await podcast', pod);
+
+      console.log('\n \n');
+      console.log( $('#albumArt > img')['0'].attribs.src );
+
+
+      console.log('\n \n');
+      console.log( $('#podcast') );
 
       return Promise.resolve(pod);
     })

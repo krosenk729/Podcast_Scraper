@@ -8,7 +8,7 @@ figure, .figure{
 	width: 100%;
 	
 	/* overlay */
-	background-image: url("/circle-coral.svg");
+	/*background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url("circle-coral.svg");*/
 
 	padding-top: 66.6666%;
 	position: relative;
