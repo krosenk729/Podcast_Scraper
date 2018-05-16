@@ -67,24 +67,14 @@ module.exports = {
     };
 
     rp(options).then($ => {
-      console.log('\n \ntesting', req.params);
-      // console.log('cheerio', $);
-      // console.log(decodeURIComponent(req.params)[0])
-      // console.log(Object.keys(decodeURIComponent(req.params)));
       let pod = {link: req.params.link};
       pod.podcast = $("#podcast h1.showName").text();
       pod.pid = $("#listenLater").attr("data-fid");
       pod.about = $("#podcast p.about").text();
       pod.img = $("#podcast #albumArt img").attr("src");
 
-      // console.log('inside await podcast', pod);
-
-      console.log('\n \n');
-      console.log( $('#albumArt > img')['0'].attribs.src );
-
-
-      console.log('\n \n');
-      console.log( $('#podcast') );
+      // console.log( $('#albumArt > img')['0'].attribs.src );
+      // console.log( $('#podcast') );
 
       return Promise.resolve(pod);
     })
